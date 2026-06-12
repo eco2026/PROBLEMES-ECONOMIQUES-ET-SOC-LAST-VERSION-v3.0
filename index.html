@@ -44,6 +44,52 @@
             opacity: 0.9;
             font-weight: 500;
         }
+        
+        /* أزرار التنقل بين الصفحات */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 15px;
+            background: #f1f5f9;
+            border-bottom: 1px solid #e2e8f0;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .nav-btn {
+            padding: 10px 30px;
+            font-size: 1.1rem;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 600;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #e2e8f0;
+            color: #334155;
+        }
+        .nav-btn.active {
+            background: #1e3a8a;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .nav-btn:hover:not(.active) {
+            background: #cbd5e1;
+            transform: translateY(-2px);
+        }
+        
+        /* الصفحات */
+        .page-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .page-content.active-page {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
         .page {
             padding: 3rem 2.5rem;
             border-bottom: 2px dashed #e2e8f0;
@@ -209,6 +255,49 @@
             line-height: 1.8;
         }
         
+        /* صفحة العلاقات الحسابية - تصميم خاص */
+        .relations-container {
+            padding: 2rem 2.5rem;
+        }
+        .relation-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .relation-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f59e0b;
+            display: inline-block;
+        }
+        .relation-math {
+            background: #f0fdfa;
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-family: 'Nunito', monospace;
+            font-size: 1.1rem;
+            direction: ltr;
+            text-align: left;
+        }
+        .relation-math-ar {
+            background: #fdf8f6;
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-family: 'Tajawal', monospace;
+            font-size: 1.15rem;
+            direction: rtl;
+            text-align: right;
+        }
+        
         /* ------------------ أزرار وستايل النظام الليلي ------------------ */
         .theme-switch {
             position: fixed;
@@ -239,6 +328,18 @@
         body.dark-mode .container {
             background: #1e293b;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+        body.dark-mode .nav-buttons {
+            background: #0f172a;
+            border-bottom-color: #334155;
+        }
+        body.dark-mode .nav-btn {
+            background: #334155;
+            color: #cbd5e6;
+        }
+        body.dark-mode .nav-btn.active {
+            background: #3b82f6;
+            color: white;
         }
         body.dark-mode .page {
             border-bottom-color: #334155;
@@ -291,6 +392,21 @@
         body.dark-mode footer {
             background: #020617;
         }
+        body.dark-mode .relation-card {
+            background: #334155;
+            border-color: #475569;
+        }
+        body.dark-mode .relation-title {
+            color: #60a5fa;
+        }
+        body.dark-mode .relation-math {
+            background: #064e3b;
+            color: #34d399;
+        }
+        body.dark-mode .relation-math-ar {
+            background: #27272a;
+            color: #f8fafc;
+        }
 
         @media (max-width: 768px) {
             .page {
@@ -312,6 +428,13 @@
                 padding: 10px 15px;
                 font-size: 0.9rem;
             }
+            .nav-btn {
+                padding: 6px 20px;
+                font-size: 0.9rem;
+            }
+            .relations-container {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
@@ -323,607 +446,622 @@
         <h1>📘 المشاكل الاقتصادية والاجتماعية - الفصل الرابع<br>Problèmes Économiques et Sociaux – S4</h1>
         <p>ملخص كامل من المرفقات (PDF و Word) مع ترجمة ثنائية ومراجع دقيقة | بدون أي تغيير في النص الأصلي</p>
     </header>
-
-    <div class="page">
-        <h2>📖 الفصل الأول: الثورة الصناعية<br>Chapitre 1 : La Révolution industrielle (RI)</h2>
-
-        <div class="section-card">
-            <div class="badge">Définition / تعريف</div>
-            <div class="fr"><strong>FR :</strong> La Révolution industrielle est un processus d'évolution économique caractérisé par un essor particulier de l'industrie qui a entraîné un changement de la structure économique et sociale. La société, jusque-là agricole, artisanale et commerciale, devient un système industriel marqué par l'usage généralisé de machines, l'utilisation de l'énergie mécanique plus performante, l'exploitation de nouvelles sources d'énergie (charbon, électricité, pétrole), et l'apparition de l'usine (factory system). Le terme a été cité par Adolfe Blanqui puis consolidé par Arnold Toynbee.</div>
-            <div class="ar"><strong>العربية :</strong> الثورة الصناعية هي عملية تطور اقتصادي تميزت بنمو غير مسبوق للصناعة مما أدى إلى تغيير جذري في البنية الاقتصادية والاجتماعية. المجتمع الذي كان زراعيًا وحرفيًا وتجاريًا، تحول إلى نظام صناعي قائم على الاستخدام الواسع للآلات، والطاقة الميكانيكية، واستغلال مصادر جديدة للطاقة، وظهور المصنع. صاغ هذا المصطلح أدولف بلانكي ثم رسخه أرنولد توينبي.</div>
-            <div class="reference">📄 المرجع: support1-PES-S4.docx | Chapitre 1 | Page 1-2</div>
-        </div>
-
-        <div class="section-card">
-            <div class="badge">Facteurs ayant préparé la RI / العوامل الممهدة</div>
-            <div class="fr"><strong>FR :</strong> 
-                <ul>
-                    <li>L'évolution intellectuelle (à partir du XVIIe siècle) : l'homme se prépare moralement et intellectuellement à maîtriser la technique.</li>
-                    <li>La révolution agricole : mécanisation, nouvelles méthodes de culture.</li>
-                    <li>La révolution industrielle anglaise (XVIIIe) comme modèle principal.</li>
-                    <li>Les innovations technologiques : machine à vapeur (Watt), coton, fer, charbon.</li>
-                    <li>La transition démographique, les mutations culturelles (émancipation de l'église, acceptation de l'accumulation de capital).</li>
-                </ul>
-            </div>
-            <div class="ar"><strong>العربية :</strong>
-                <ul>
-                    <li>التطور الفكري (منذ القرن 17): استعداد الإنسان فكريًا ومعنويًا للسيطرة على التقنية.</li>
-                    <li>الثورة الزراعية: ميكنة، طرق زراعية جديدة.</li>
-                    <li>الثورة الصناعية الإنجليزية (القرن 18) كنموذج أساسي.</li>
-                    <li>الابتكارات التكنولوجية: المحرك البخاري (واط)، القطن، الحديد، الفحم.</li>
-                    <li>التحول الديموغرافي، التحولات الثقافية (التحرر من الكنيسة، تقبل تراكم رأس المال).</li>
-                </ul>
-            </div>
-            <div class="reference">📄 المرجع: support1-PES-S4.docx | Chapitre 1 | Page 2</div>
-        </div>
-
-        <div class="section-card">
-            <div class="badge">Étapes et inventions / المراحل والاختراعات</div>
-            <div class="fr"><strong>FR :</strong> Quatre secteurs clés : le coton, le fer, le charbon, la vapeur. La principale application est le chemin de fer qui devient secteur leader.</div>
-            <div class="ar"><strong>العربية :</strong> أربعة قطاعات رئيسية: القطن، الحديد، الفحم، البخار. التطبيق الرئيسي هو السكة الحديدية التي أصبحت قطاعًا رائدًا.</div>
-            <table>
-                <thead>
-                    <tr><th>Étape / المرحلة</th><th>Période / الفترة</th><th>Ressources / الموارد</th><th>Inventions clés / الاختراعات الرئيسية</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1ère RI</td>
-                        <td>À partir de 1750</td>
-                        <td>Charbon, eau, bois</td>
-                        <td>Machine à vapeur (Watt), métiers à filer, textile mécanisé, haut fourneau</td>
-                    </tr>
-                    <tr>
-                        <td>2ème RI</td>
-                        <td>À partir de 1870</td>
-                        <td>Électricité, pétrole</td>
-                        <td>Moteur à essence, électricité, chimie, chemin de fer, automobile</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="reference">📄 المرجع: support1-PES-S4.docx | Chapitre 1 | Page 3</div>
-        </div>
-
-        <div class="section-card">
-            <div class="badge">Conséquences de la RI / نتائج الثورة الصناعية</div>
-            <div class="fr"><strong>FR :</strong>
-                <ul>
-                    <li><strong>Économiques :</strong> naissance du capitalisme moderne, crises économiques, inégale répartition des richesses, développement des zones industrielles.</li>
-                    <li><strong>Sociales :</strong> apparition de deux classes opposées : bourgeoisie (propriétaires des moyens de production) et prolétariat (ouvriers). Exode rural, urbanisation, conditions de vie difficiles décrites par Hugo et Dickens. Ces conditions à la limite de l'esclavagisme ont inspiré les œuvres de Marx et Engels.</li>
-                    <li><strong>Démographiques :</strong> hausse de la population (de 70 millions à 250 millions en Europe en deux siècles), espérance de vie passe de 45-50 à 75 ans, baisse du nombre d'enfants par femme (de 5 à 2).</li>
-                    <li><strong>Culturelles :</strong> naissance du libéralisme ("laisser faire, laisser passer"), développement des transports (routes, canaux, voies ferrées).</li>
-                </ul>
-            </div>
-            <div class="ar"><strong>العربية :</strong>
-                <ul>
-                    <li><strong>اقتصادية:</strong> ولادة الرأسمالية الحديثة، أزمات اقتصادية، توزيع غير متساو للثروة، تطور مناطق صناعية.</li>
-                    <li><strong>اجتماعية:</strong> ظهور طبقتين متضادتين: برجوازية (مالكة وسائل الإنتاج) وبروليتاريا (عمال). نزوح ريفي، تحضر، أوضاع معيشية صعبة وصفها هوغو وديكنز. هذه الظروف التي تقارب العبودية ألهمت أعمال ماركس وإنجلز.</li>
-                    <li><strong>ديموغرافية:</strong> ارتفاع عدد السكان (من 70 إلى 250 مليون في أوروبا خلال قرنين)، متوسط العمر من 45-50 إلى 75 سنة، انخفاض عدد الأطفال لكل امرأة من 5 إلى 2.</li>
-                    <li><strong>ثقافية:</strong> ولادة الليبرالية ("دعه يعمل، دعه يمر")، تطور وسائل النقل (طرق، قنوات، سكك حديدية).</li>
-                </ul>
-            </div>
-            <div class="reference">📄 المرجع: support1-PES-S4.docx | Chapitre 1 | Page 4-5</div>
-        </div>
-
-        <div class="section-card">
-            <div class="badge">Lien entre RI et capitalisme / العلاقة بين الثورة الصناعية والرأسمالية</div>
-            <div class="fr"><strong>FR :</strong> La Révolution industrielle a donné naissance au capitalisme moderne. Avant elle, la société était agricole et artisanale. Avec l'usine, les machines et la propriété privée des moyens de production, le capitalisme s'est imposé. Les nobles deviennent capitaines d'industrie, les paysans deviennent prolétaires, et les assistants forment la bourgeoisie. C'est ainsi que naît le capitalisme moderne.</div>
-            <div class="ar"><strong>العربية :</strong> أنجبت الثورة الصناعية الرأسمالية الحديثة. فقبلها كان المجتمع زراعيًا وحرفيًا. ومع ظهور المصنع والآلات والملكية الخاصة لوسائل الإنتاج، فرضت الرأسمالية نفسها. تحول النبلاء إلى قباطنة صناعة، والفلاحون إلى بروليتاريا، والمساعدون إلى برجوازية. هكذا وُلدت الرأسمالية الحديثة.</div>
-            <div class="reference">📄 المرجع: support1-PES-S4.docx | Chapitre 1 | Page 5</div>
-        </div>
-
-        <h2>💰 الفصل الثاني: الرأسمالية<br>Chapitre 2 : Le capitalisme</h2>
-
-        <div class="section-card">
-            <div class="badge">Définition / تعريف</div>
-            <div class="fr"><strong>FR :</strong> Le capitalisme est un système économique ou une façon d’organiser l’économie qui repose sur l’accumulation de capital. Il se caractérise par : l’accès au capital (banque/bourse), la propriété privée des moyens de production, la recherche continue de profits. La révolution industrielle du XIXe siècle correspond à la mise en place du capitalisme.</div>
-            <div class="ar"><strong>العربية :</strong> الرأسمالية هي نظام اقتصادي أو طريقة لتنظيم الاقتصاد تقوم على تراكم رأس المال. وتتميز بالوصول إلى رأس المال (بنك/بورصة)، والملكية الخاصة لوسائل الإنتاج، والبحث المستمر عن الربح. الثورة الصناعية في القرن 19 تتوافق مع نشأة الرأسمالية.</div>
-            <div class="reference">📄 المرجع: support2-PES-S4.pdf | Chapitre 2 | Page 1</div>
-        </div>
-
-        <div class="section-card">
-            <div class="badge">Types de capitalisme / أنواع الرأسمالية</div>
-            <div class="fr"><strong>FR :</strong> 
-                <ul>
-                    <li>Capitalisme commercial (XVIe-XVIIIe siècle).</li>
-                    <li>Capitalisme libéral (XIXe siècle).</li>
-                    <li>Capitalisme institutionnel (XXe siècle).</li>
-                    <li>Économie de marché (réglementation minimale).</li>
-                    <li>Économie mixte (marché + régulation publique, modèle dominant actuel).</li>
-                </ul>
-            </div>
-            <div class="ar"><strong>العربية :</strong>
-                <ul>
-                    <li>رأسمالية تجارية (القرون 16-18).</li>
-                    <li>رأسمالية ليبرالية (القرن 19).</li>
-                    <li>رأسمالية مؤسساتية (القرن 20).</li>
-                    <li>اقتصاد السوق (تنظيم أدنى).</li>
-                    <li>اقتصاد مختلط (سوق + تنظيم عام، النموذج المسيطر حاليًا).</li>
-                </ul>
-            </div>
-            <div class="reference">📄 المرجع: support2-PES-S4.pdf | Chapitre 2 | Page 1-2</div>
-        </div>
-
-        <div class="section-card">
-            <div class="badge">Piliers du capitalisme / أركان الرأسمالية</div>
-            <div class="fr"><strong>FR :</strong>
-                <ol>
-                    <li>Propriété privée (biens matériels et immatériels).</li>
-                    <li>Intérêt personnel (main invisible – Adam Smith, 1776).</li>
-                    <li>Concurrence (libre entrée et sortie du marché).</li>
-                    <li>Mécanisme de marché (prix déterminés par l'offre et la demande).</li>
-                    <li>Liberté de choix (consommation, production, investissement, travail).</li>
-                    <li>Rôle limité des pouvoirs publics (protection des droits et environnement favorable).</li>
-                </ol>
-            </div>
-            <div class="ar"><strong>العربية :</strong>
-                <ol>
-                    <li>ملكية خاصة (أصول مادية وغير مادية).</li>
-                    <li>مصلحة شخصية (اليد الخفية – آدم سميث، 1776).</li>
-                    <li>منافسة (حرية الدخول والخروج من السوق).</li>
-                    <li>آلية السوق (تحديد الأسعار بالعرض والطلب).</li>
-                    <li>حرية الاختيار (استهلاك، إنتاج، استثمار، عمل).</li>
-                    <li>دور محدود للسلطات العامة (حماية الحقوق وبيئة مواتية).</li>
-                </ol>
-            </div>
-            <div class="reference">📄 المرجع: support2-PES-S4.pdf | Chapitre 2 | Page 2</div>
-        </div>
-
-        <div class="section-card">
-            <div class="badge">Points positifs et négatifs / إيجابيات وسلبيات</div>
-            <table>
-                <thead><tr><th>Positifs / إيجابيات</th><th>Négatifs / سلبيات</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <td>Croissance économique, innovation technologique</td>
-                        <td>Inégalités, chômage structurel, crises cycliques</td>
-                    </tr>
-                    <tr>
-                        <td>Liberté économique, accumulation de capital</td>
-                        <td>Exploitation du prolétariat, concentration des richesses</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="reference">📄 المرجع: support2-PES-S4.pdf | Chapitre 2 | Page 4-5</div>
-        </div>
-
-        <div class="section-card">
-            <div class="badge">Causes et conséquences du capitalisme / الأسباب والنتائج</div>
-            <div class="fr"><strong>FR :</strong> Causes : révolution industrielle, accumulation de capital, propriété privée, recherche de profit. Conséquences : inégale répartition des richesses, naissance des classes sociales (bourgeoisie/prolétariat), crises économiques, développement du libéralisme.</div>
-            <div class="ar"><strong>العربية :</strong> الأسباب: الثورة الصناعية، تراكم رأس المال، الملكية الخاصة، البحث عن الربح. النتائج: توزيع غير متساو للثروات، ولادة الطبقات الاجتماعية (برجوازية/بروليتاريا)، أزمات اقتصادية، تطور الليبرالية.</div>
-            <div class="reference">📄 المرجع: support2-PES-S4.pdf | Chapitre 2 | Page 3-4</div>
-        </div>
-
-        <h2>🌐 الفصل الثالث: العولمة<br>Chapitre 3 : La mondialisation</h2>
-
-        <div class="section-card">
-            <div class="badge">Définition / تعريف</div>
-            <div class="fr"><strong>FR :</strong> La mondialisation est le processus d'intégration des économies à travers les échanges commerciaux, financiers et technologiques, ainsi que la libre circulation des capitaux et des biens. Elle est liée à la recherche de nouveaux marchés et à la suppression des barrières douanières.</div>
-            <div class="ar"><strong>العربية :</strong> العولمة هي عملية دمج الاقتصادات عبر التبادلات التجارية والمالية والتكنولوجية، وكذلك حرية حركة رؤوس الأموال والسلع. ترتبط بالبحث عن أسواق جديدة وإزالة الحواجز الجمركية.</div>
-            <div class="reference">📄 المرجع: support2-PES-S4.pdf | Chapitre 3 | Page 2</div>
-        </div>
-
-        <div class="section-card">
-            <div class="badge">Causes de la mondialisation / أسباب العولمة</div>
-            <div class="fr"><strong>FR :</strong> 
-                <ul>
-                    <li>Rôle historique de l'Angleterre (pionnière du libre-échange).</li>
-                    <li>Développement des transports (chemin de fer, navigation, automobile).</li>
-                    <li>Recherche de nouveaux marchés et de débouchés pour les industries.</li>
-                    <li>Progrès technologiques et financiers.</li>
-                </ul>
-            </div>
-            <div class="ar"><strong>العربية :</strong>
-                <ul>
-                    <li>الدور التاريخي لإنجلترا (رائدة التجارة الحرة).</li>
-                    <li>تطور وسائل النقل (سكك حديدية، ملاحة، سيارات).</li>
-                    <li>البحث عن أسواق ومنافذ جديدة للصناعات.</li>
-                    <li>التقدم التكنولوجي والمالي.</li>
-                </ul>
-            </div>
-            <div class="reference">📄 المرجع: support2-PES-S4.pdf | Chapitre 3 | Page 5 + الصورة الثانية</div>
-        </div>
-
-        <div class="section-card">
-            <div class="badge">Acteurs de la mondialisation / فاعلو العولمة</div>
-            <div class="fr"><strong>FR :</strong> 
-                <ul>
-                    <li><strong>OMC (Organisation mondiale du commerce) :</strong> favorise la libéralisation des échanges.</li>
-                    <li><strong>UE (Union européenne) :</strong> exemple d'intégration régionale avec suppression des barrières douanières.</li>
-                    <li>Firmes multinationales, institutions financières internationales (FMI, Banque mondiale).</li>
-                </ul>
-            </div>
-            <div class="ar"><strong>العربية :</strong>
-                <ul>
-                    <li><strong>منظمة التجارة العالمية (OMC):</strong> تشجع تحرير التبادلات.</li>
-                    <li><strong>الاتحاد الأوروبي (UE):</strong> نموذج للتكامل الإقليمي مع إزالة الحواجز الجمركية.</li>
-                    <li>الشركات متعددة الجنسيات، المؤسسات المالية الدولية (صندوق النقد، البنك الدولي).</li>
-                </ul>
-            </div>
-            <div class="reference">📄 المرجع: الصورة الثانية (WhatsApp Image) | Chapitre 3</div>
-        </div>
-
-        <div class="section-card">
-            <div class="badge">Conséquences de la mondialisation / نتائج العولمة</div>
-            <div class="fr"><strong>FR :</strong> 
-                <ul>
-                    <li><strong>Économiques :</strong> augmentation des échanges, développement du commerce international, domination des firmes multinationales, délocalisations.</li>
-                    <li><strong>Sociales :</strong> pertes d'emplois dans les pays développés (désindustrialisation), pression sur les salaires, mais création d'emplois dans les pays émergents.</li>
-                    <li><strong>Politiques :</strong> affaiblissement relatif des États-nations face aux marchés financiers.</li>
-                </ul>
-            </div>
-            <div class="ar"><strong>العربية :</strong>
-                <ul>
-                    <li><strong>اقتصادية:</strong> زيادة التبادلات، تطور التجارة الدولية، هيمنة الشركات متعددة الجنسيات، نقل الأنشطة.</li>
-                    <li><strong>اجتماعية:</strong> فقدان وظائف في الدول المتقدمة (إزالة الصناعة)، ضغط على الأجور، لكن خلق وظائف في الدول الناشئة.</li>
-                    <li><strong>سياسية:</strong> ضعف نسبي للدول القومية أمام الأسواق المالية.</li>
-                </ul>
-            </div>
-            <div class="reference">📄 المرجع: support2-PES-S4.pdf | Chapitre 3 | Page 5</div>
-        </div>
-
-        <div class="section-card">
-            <div class="badge">Lien capitalisme / mondialisation / العلاقة بين الرأسمالية والعولمة</div>
-            <div class="fr"><strong>FR :</strong> La mondialisation est l'extension naturelle du capitalisme. Le capitalisme, basé sur la recherche de profit et l'accumulation de capital, pousse à l'ouverture des marchés, à la libre circulation des capitaux et à l'expansion mondiale des firmes. La mondialisation est donc la phase actuelle du capitalisme à l'échelle planétaire.</div>
-            <div class="ar"><strong>العربية :</strong> العولمة هي الامتداد الطبيعي للرأسمالية. فالرأسمالية القائمة على البحث عن الربح وتراكم رأس المال تدفع نحو فتح الأسواق وحرية حركة رؤوس الأموال والتوسع العالمي للشركات. إذن العولمة هي المرحلة الحالية للرأسمالية على المستوى الكوكبي.</div>
-            <div class="reference">📄 المرجع: الصورة الثانية (WhatsApp Image) | Chapitre 3</div>
-        </div>
+    
+    <!-- أزرار التنقل بين الصفحات -->
+    <div class="nav-buttons">
+        <button class="nav-btn active" onclick="showPage('main')">📖 المحتوى الأصلي - الملخص الكامل</button>
+        <button class="nav-btn" onclick="showPage('relations')">🧮 صفحة العلاقات الحسابية فقط</button>
     </div>
 
-    <div class="page">
-        <h2>📊 الفصل الرابع: النمو، التنمية، التضخم، البطالة، الفقر<br>Chapitre 4 : Croissance, développement, inflation, chômage, pauvreté</h2>
+    <!-- ============================================ -->
+    <!-- الصفحة الرئيسية: المحتوى الأصلي (بدون أي تغيير) -->
+    <!-- ============================================ -->
+    <div id="main-page" class="page-content active-page">
+        <div class="page">
+            <h2>📖 الفصل الأول: الثورة الصناعية<br>Chapitre 1 : La Révolution industrielle (RI)</h2>
 
-        <div class="section-card">
-            <div class="badge">Définition de la croissance économique / تعريف النمو الاقتصادي</div>
-            <div class="fr"><strong>FR :</strong> La croissance économique est un accroissement durant une longue période de la performance économique. Elle est mesurée par le PIB (Produit intérieur brut) ou le PNB (Produit national brut). C'est un processus quantitatif qui se traduit par l'augmentation de la production de biens et services (marchands et non marchands) sur un territoire donné, mesurée par le taux d'évolution du PIB en volume (sans inflation).</div>
-            <div class="ar"><strong>العربية :</strong> النمو الاقتصادي هو زيادة في الأداء الاقتصادي خلال فترة طويلة. يُقاس بالناتج المحلي الإجمالي (PIB) أو الناتج القومي الإجمالي (PNB). إنها عملية كمية تترجم بزيادة إنتاج السلع والخدمات (سوقية وغير سوقية) في إقليم معين، ويُقاس بمعدل تطور الناتج المحلي الإجمالي الحقيقي (بدون تضخم).</div>
-            
-            <div class="math-example">
-                <div class="fr-math"><strong>🧮 Exemple de calcul du taux de croissance :</strong><br>
-                Si le PIB d'un pays était de 1000 milliards de dollars en 2023 et qu'il atteint 1050 milliards de dollars en 2024.<br>
-                <em>Taux de croissance = (PIB année n - PIB année n-1) / PIB année n-1 × 100</em><br>
-                <em>Taux de croissance = (1050 - 1000) / 1000 × 100 = 50 / 1000 × 100 = 5%.</em><br>
-                Le PIB a donc augmenté de 5% entre 2023 et 2024.</div>
-                <div class="ar-math"><strong>🧮 مثال حسابي لمعدل النمو الاقتصادي :</strong><br>
-                إذا كان الناتج المحلي الإجمالي لدولة ما يساوي 1000 مليار دولار في 2023 وأصبح 1050 مليار دولار في 2024.<br>
-                <em>معدل النمو = (الناتج المحلي الإجمالي للسنة الحالية - الناتج المحلي الإجمالي للسنة السابقة) / الناتج المحلي الإجمالي للسنة السابقة × 100</em><br>
-                <em>معدل النمو = (1050 - 1000) / 1000 × 100 = 50 / 1000 × 100 = 5%.</em><br>
-                                أي أن الناتج المحلي الإجمالي زاد بنسبة 5٪ بين 2023 و 2024.</div>
+            <div class="section-card">
+                <div class="badge">Définition / تعريف</div>
+                <div class="fr"><strong>FR :</strong> La Révolution industrielle est un processus d'évolution économique caractérisé par un essor particulier de l'industrie qui a entraîné un changement de la structure économique et sociale. La société, jusque-là agricole, artisanale et commerciale, devient un système industriel marqué par l'usage généralisé de machines, l'utilisation de l'énergie mécanique plus performante, l'exploitation de nouvelles sources d'énergie (charbon, électricité, pétrole), et l'apparition de l'usine (factory system). Le terme a été cité par Adolfe Blanqui puis consolidé par Arnold Toynbee.</div>
+                <div class="ar"><strong>العربية :</strong> الثورة الصناعية هي عملية تطور اقتصادي تميزت بنمو غير مسبوق للصناعة مما أدى إلى تغيير جذري في البنية الاقتصادية والاجتماعية. المجتمع الذي كان زراعيًا وحرفيًا وتجاريًا، تحول إلى نظام صناعي قائم على الاستخدام الواسع للآلات، والطاقة الميكانيكية، واستغلال مصادر جديدة للطاقة، وظهور المصنع. صاغ هذا المصطلح أدولف بلانكي ثم رسخه أرنولد توينبي.</div>
+                <div class="reference">📄 المرجع: support1-PES-S4.docx | Chapitre 1 | Page 1-2</div>
             </div>
-            <div class="reference">📄 المرجع: support4-PES-S4.pdf | Chapitre 4 | Page 2 + support5-PES-S4 2.docx | Page 1</div>
+
+            <div class="section-card">
+                <div class="badge">Facteurs ayant préparé la RI / العوامل الممهدة</div>
+                <div class="fr"><strong>FR :</strong> 
+                    <ul>
+                        <li>L'évolution intellectuelle (à partir du XVIIe siècle) : l'homme se prépare moralement et intellectuellement à maîtriser la technique.</li>
+                        <li>La révolution agricole : mécanisation, nouvelles méthodes de culture.</li>
+                        <li>La révolution industrielle anglaise (XVIIIe) comme modèle principal.</li>
+                        <li>Les innovations technologiques : machine à vapeur (Watt), coton, fer, charbon.</li>
+                        <li>La transition démographique, les mutations culturelles (émancipation de l'église, acceptation de l'accumulation de capital).</li>
+                    </ul>
+                </div>
+                <div class="ar"><strong>العربية :</strong>
+                    <ul>
+                        <li>التطور الفكري (منذ القرن 17): استعداد الإنسان فكريًا ومعنويًا للسيطرة على التقنية.</li>
+                        <li>الثورة الزراعية: ميكنة، طرق زراعية جديدة.</li>
+                        <li>الثورة الصناعية الإنجليزية (القرن 18) كنموذج أساسي.</li>
+                        <li>الابتكارات التكنولوجية: المحرك البخاري (واط)، القطن، الحديد، الفحم.</li>
+                        <li>التحول الديموغرافي، التحولات الثقافية (التحرر من الكنيسة، تقبل تراكم رأس المال).</li>
+                    </ul>
+                </div>
+                <div class="reference">📄 المرجع: support1-PES-S4.docx | Chapitre 1 | Page 2</div>
+            </div>
+
+            <div class="section-card">
+                <div class="badge">Étapes et inventions / المراحل والاختراعات</div>
+                <div class="fr"><strong>FR :</strong> Quatre secteurs clés : le coton, le fer, le charbon, la vapeur. La principale application est le chemin de fer qui devient secteur leader.</div>
+                <div class="ar"><strong>العربية :</strong> أربعة قطاعات رئيسية: القطن، الحديد، الفحم، البخار. التطبيق الرئيسي هو السكة الحديدية التي أصبحت قطاعًا رائدًا.</div>
+                <table>
+                    <thead>
+                        <tr><th>Étape / المرحلة</th><th>Période / الفترة</th><th>Ressources / الموارد</th><th>Inventions clés / الاختراعات الرئيسية</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1ère RI</td><td>À partir de 1750</td><td>Charbon, eau, bois</td><td>Machine à vapeur (Watt), métiers à filer, textile mécanisé, haut fourneau</td></tr>
+                        <tr><td>2ème RI</td><td>À partir de 1870</td><td>Électricité, pétrole</td><td>Moteur à essence, électricité, chimie, chemin de fer, automobile</td></tr>
+                    </tbody>
+                </table>
+                <div class="reference">📄 المرجع: support1-PES-S4.docx | Chapitre 1 | Page 3</div>
+            </div>
+
+            <div class="section-card">
+                <div class="badge">Conséquences de la RI / نتائج الثورة الصناعية</div>
+                <div class="fr"><strong>FR :</strong>
+                    <ul>
+                        <li><strong>Économiques :</strong> naissance du capitalisme moderne, crises économiques, inégale répartition des richesses, développement des zones industrielles.</li>
+                        <li><strong>Sociales :</strong> apparition de deux classes opposées : bourgeoisie (propriétaires des moyens de production) et prolétariat (ouvriers). Exode rural, urbanisation, conditions de vie difficiles décrites par Hugo et Dickens. Ces conditions à la limite de l'esclavagisme ont inspiré les œuvres de Marx et Engels.</li>
+                        <li><strong>Démographiques :</strong> hausse de la population (de 70 millions à 250 millions en Europe en deux siècles), espérance de vie passe de 45-50 à 75 ans, baisse du nombre d'enfants par femme (de 5 à 2).</li>
+                        <li><strong>Culturelles :</strong> naissance du libéralisme ("laisser faire, laisser passer"), développement des transports (routes, canaux, voies ferrées).</li>
+                    </ul>
+                </div>
+                <div class="ar"><strong>العربية :</strong>
+                    <ul>
+                        <li><strong>اقتصادية:</strong> ولادة الرأسمالية الحديثة، أزمات اقتصادية، توزيع غير متساو للثروة، تطور مناطق صناعية.</li>
+                        <li><strong>اجتماعية:</strong> ظهور طبقتين متضادتين: برجوازية (مالكة وسائل الإنتاج) وبروليتاريا (عمال). نزوح ريفي، تحضر، أوضاع معيشية صعبة وصفها هوغو وديكنز. هذه الظروف التي تقارب العبودية ألهمت أعمال ماركس وإنجلز.</li>
+                        <li><strong>ديموغرافية:</strong> ارتفاع عدد السكان (من 70 إلى 250 مليون في أوروبا خلال قرنين)، متوسط العمر من 45-50 إلى 75 سنة، انخفاض عدد الأطفال لكل امرأة من 5 إلى 2.</li>
+                        <li><strong>ثقافية:</strong> ولادة الليبرالية ("دعه يعمل، دعه يمر")، تطور وسائل النقل (طرق، قنوات، سكك حديدية).</li>
+                    </ul>
+                </div>
+                <div class="reference">📄 المرجع: support1-PES-S4.docx | Chapitre 1 | Page 4-5</div>
+            </div>
+
+            <div class="section-card">
+                <div class="badge">Lien entre RI et capitalisme / العلاقة بين الثورة الصناعية والرأسمالية</div>
+                <div class="fr"><strong>FR :</strong> La Révolution industrielle a donné naissance au capitalisme moderne. Avant elle, la société était agricole et artisanale. Avec l'usine, les machines et la propriété privée des moyens de production, le capitalisme s'est imposé. Les nobles deviennent capitaines d'industrie, les paysans deviennent prolétaires, et les assistants forment la bourgeoisie. C'est ainsi que naît le capitalisme moderne.</div>
+                <div class="ar"><strong>العربية :</strong> أنجبت الثورة الصناعية الرأسمالية الحديثة. فقبلها كان المجتمع زراعيًا وحرفيًا. ومع ظهور المصنع والآلات والملكية الخاصة لوسائل الإنتاج، فرضت الرأسمالية نفسها. تحول النبلاء إلى قباطنة صناعة، والفلاحون إلى بروليتاريا، والمساعدون إلى برجوازية. هكذا وُلدت الرأسمالية الحديثة.</div>
+                <div class="reference">📄 المرجع: support1-PES-S4.docx | Chapitre 1 | Page 5</div>
+            </div>
+
+            <h2>💰 الفصل الثاني: الرأسمالية<br>Chapitre 2 : Le capitalisme</h2>
+
+            <div class="section-card">
+                <div class="badge">Définition / تعريف</div>
+                <div class="fr"><strong>FR :</strong> Le capitalisme est un système économique ou une façon d’organiser l’économie qui repose sur l’accumulation de capital. Il se caractérise par : l’accès au capital (banque/bourse), la propriété privée des moyens de production, la recherche continue de profits. La révolution industrielle du XIXe siècle correspond à la mise en place du capitalisme.</div>
+                <div class="ar"><strong>العربية :</strong> الرأسمالية هي نظام اقتصادي أو طريقة لتنظيم الاقتصاد تقوم على تراكم رأس المال. وتتميز بالوصول إلى رأس المال (بنك/بورصة)، والملكية الخاصة لوسائل الإنتاج، والبحث المستمر عن الربح. الثورة الصناعية في القرن 19 تتوافق مع نشأة الرأسمالية.</div>
+                <div class="reference">📄 المرجع: support2-PES-S4.pdf | Chapitre 2 | Page 1</div>
+            </div>
+
+            <div class="section-card">
+                <div class="badge">Types de capitalisme / أنواع الرأسمالية</div>
+                <div class="fr"><strong>FR :</strong> 
+                    <ul>
+                        <li>Capitalisme commercial (XVIe-XVIIIe siècle).</li>
+                        <li>Capitalisme libéral (XIXe siècle).</li>
+                        <li>Capitalisme institutionnel (XXe siècle).</li>
+                        <li>Économie de marché (réglementation minimale).</li>
+                        <li>Économie mixte (marché + régulation publique, modèle dominant actuel).</li>
+                    </ul>
+                </div>
+                <div class="ar"><strong>العربية :</strong>
+                    <ul>
+                        <li>رأسمالية تجارية (القرون 16-18).</li>
+                        <li>رأسمالية ليبرالية (القرن 19).</li>
+                        <li>رأسمالية مؤسساتية (القرن 20).</li>
+                        <li>اقتصاد السوق (تنظيم أدنى).</li>
+                        <li>اقتصاد مختلط (سوق + تنظيم عام، النموذج المسيطر حاليًا).</li>
+                    </ul>
+                </div>
+                <div class="reference">📄 المرجع: support2-PES-S4.pdf | Chapitre 2 | Page 1-2</div>
+            </div>
+
+            <div class="section-card">
+                <div class="badge">Piliers du capitalisme / أركان الرأسمالية</div>
+                <div class="fr"><strong>FR :</strong>
+                    <ol>
+                        <li>Propriété privée (biens matériels et immatériels).</li>
+                        <li>Intérêt personnel (main invisible – Adam Smith, 1776).</li>
+                        <li>Concurrence (libre entrée et sortie du marché).</li>
+                        <li>Mécanisme de marché (prix déterminés par l'offre et la demande).</li>
+                        <li>Liberté de choix (consommation, production, investissement, travail).</li>
+                        <li>Rôle limité des pouvoirs publics (protection des droits et environnement favorable).</li>
+                    </ol>
+                </div>
+                <div class="ar"><strong>العربية :</strong>
+                    <ol>
+                        <li>ملكية خاصة (أصول مادية وغير مادية).</li>
+                        <li>مصلحة شخصية (اليد الخفية – آدم سميث، 1776).</li>
+                        <li>منافسة (حرية الدخول والخروج من السوق).</li>
+                        <li>آلية السوق (تحديد الأسعار بالعرض والطلب).</li>
+                        <li>حرية الاختيار (استهلاك، إنتاج، استثمار، عمل).</li>
+                        <li>دور محدود للسلطات العامة (حماية الحقوق وبيئة مواتية).</li>
+                    </ol>
+                </div>
+                <div class="reference">📄 المرجع: support2-PES-S4.pdf | Chapitre 2 | Page 2</div>
+            </div>
+
+            <div class="section-card">
+                <div class="badge">Points positifs et négatifs / إيجابيات وسلبيات</div>
+                <table>
+                    <thead><tr><th>Positifs / إيجابيات</th><th>Négatifs / سلبيات</th></tr></thead>
+                    <tbody>
+                        <tr><td>Croissance économique, innovation technologique</td><td>Inégalités, chômage structurel, crises cycliques</td></tr>
+                        <tr><td>Liberté économique, accumulation de capital</td><td>Exploitation du prolétariat, concentration des richesses</td></tr>
+                    </tbody>
+                </table>
+                <div class="reference">📄 المرجع: support2-PES-S4.pdf | Chapitre 2 | Page 4-5</div>
+            </div>
+
+            <div class="section-card">
+                <div class="badge">Causes et conséquences du capitalisme / الأسباب والنتائج</div>
+                <div class="fr"><strong>FR :</strong> Causes : révolution industrielle, accumulation de capital, propriété privée, recherche de profit. Conséquences : inégale répartition des richesses, naissance des classes sociales (bourgeoisie/prolétariat), crises économiques, développement du libéralisme.</div>
+                <div class="ar"><strong>العربية :</strong> الأسباب: الثورة الصناعية، تراكم رأس المال، الملكية الخاصة، البحث عن الربح. النتائج: توزيع غير متساو للثروات، ولادة الطبقات الاجتماعية (برجوازية/بروليتاريا)، أزمات اقتصادية، تطور الليبرالية.</div>
+                <div class="reference">📄 المرجع: support2-PES-S4.pdf | Chapitre 2 | Page 3-4</div>
+            </div>
+
+            <h2>🌐 الفصل الثالث: العولمة<br>Chapitre 3 : La mondialisation</h2>
+
+            <div class="section-card">
+                <div class="badge">Définition / تعريف</div>
+                <div class="fr"><strong>FR :</strong> La mondialisation est le processus d'intégration des économies à travers les échanges commerciaux, financiers et technologiques, ainsi que la libre circulation des capitaux et des biens. Elle est liée à la recherche de nouveaux marchés et à la suppression des barrières douanières.</div>
+                <div class="ar"><strong>العربية :</strong> العولمة هي عملية دمج الاقتصادات عبر التبادلات التجارية والمالية والتكنولوجية، وكذلك حرية حركة رؤوس الأموال والسلع. ترتبط بالبحث عن أسواق جديدة وإزالة الحواجز الجمركية.</div>
+                <div class="reference">📄 المرجع: support2-PES-S4.pdf | Chapitre 3 | Page 2</div>
+            </div>
+
+            <div class="section-card">
+                <div class="badge">Causes de la mondialisation / أسباب العولمة</div>
+                <div class="fr"><strong>FR :</strong> 
+                    <ul>
+                        <li>Rôle historique de l'Angleterre (pionnière du libre-échange).</li>
+                        <li>Développement des transports (chemin de fer, navigation, automobile).</li>
+                        <li>Recherche de nouveaux marchés et de débouchés pour les industries.</li>
+                        <li>Progrès technologiques et financiers.</li>
+                    </ul>
+                </div>
+                <div class="ar"><strong>العربية :</strong>
+                    <ul>
+                        <li>الدور التاريخي لإنجلترا (رائدة التجارة الحرة).</li>
+                        <li>تطور وسائل النقل (سكك حديدية، ملاحة، سيارات).</li>
+                        <li>البحث عن أسواق ومنافذ جديدة للصناعات.</li>
+                        <li>التقدم التكنولوجي والمالي.</li>
+                    </ul>
+                </div>
+                <div class="reference">📄 المرجع: support2-PES-S4.pdf | Chapitre 3 | Page 5 + الصورة الثانية</div>
+            </div>
+
+            <div class="section-card">
+                <div class="badge">Acteurs de la mondialisation / فاعلو العولمة</div>
+                <div class="fr"><strong>FR :</strong> 
+                    <ul>
+                        <li><strong>OMC (Organisation mondiale du commerce) :</strong> favorise la libéralisation des échanges.</li>
+                        <li><strong>UE (Union européenne) :</strong> exemple d'intégration régionale avec suppression des barrières douanières.</li>
+                        <li>Firmes multinationales, institutions financières internationales (FMI, Banque mondiale).</li>
+                    </ul>
+                </div>
+                <div class="ar"><strong>العربية :</strong>
+                    <ul>
+                        <li><strong>منظمة التجارة العالمية (OMC):</strong> تشجع تحرير التبادلات.</li>
+                        <li><strong>الاتحاد الأوروبي (UE):</strong> نموذج للتكامل الإقليمي مع إزالة الحواجز الجمركية.</li>
+                        <li>الشركات متعددة الجنسيات، المؤسسات المالية الدولية (صندوق النقد، البنك الدولي).</li>
+                    </ul>
+                </div>
+                <div class="reference">📄 المرجع: الصورة الثانية (WhatsApp Image) | Chapitre 3</div>
+            </div>
+
+            <div class="section-card">
+                <div class="badge">Conséquences de la mondialisation / نتائج العولمة</div>
+                <div class="fr"><strong>FR :</strong> 
+                    <ul>
+                        <li><strong>Économiques :</strong> augmentation des échanges, développement du commerce international, domination des firmes multinationales, délocalisations.</li>
+                        <li><strong>Sociales :</strong> pertes d'emplois dans les pays développés (désindustrialisation), pression sur les salaires, mais création d'emplois dans les pays émergents.</li>
+                        <li><strong>Politiques :</strong> affaiblissement relatif des États-nations face aux marchés financiers.</li>
+                    </ul>
+                </div>
+                <div class="ar"><strong>العربية :</strong>
+                    <ul>
+                        <li><strong>اقتصادية:</strong> زيادة التبادلات، تطور التجارة الدولية، هيمنة الشركات متعددة الجنسيات، نقل الأنشطة.</li>
+                        <li><strong>اجتماعية:</strong> فقدان وظائف في الدول المتقدمة (إزالة الصناعة)، ضغط على الأجور، لكن خلق وظائف في الدول الناشئة.</li>
+                        <li><strong>سياسية:</strong> ضعف نسبي للدول القومية أمام الأسواق المالية.</li>
+                    </ul>
+                </div>
+                <div class="reference">📄 المرجع: support2-PES-S4.pdf | Chapitre 3 | Page 5</div>
+            </div>
+
+            <div class="section-card">
+                <div class="badge">Lien capitalisme / mondialisation / العلاقة بين الرأسمالية والعولمة</div>
+                <div class="fr"><strong>FR :</strong> La mondialisation est l'extension naturelle du capitalisme. Le capitalisme, basé sur la recherche de profit et l'accumulation de capital, pousse à l'ouverture des marchés, à la libre circulation des capitaux et à l'expansion mondiale des firmes. La mondialisation est donc la phase actuelle du capitalisme à l'échelle planétaire.</div>
+                <div class="ar"><strong>العربية :</strong> العولمة هي الامتداد الطبيعي للرأسمالية. فالرأسمالية القائمة على البحث عن الربح وتراكم رأس المال تدفع نحو فتح الأسواق وحرية حركة رؤوس الأموال والتوسع العالمي للشركات. إذن العولمة هي المرحلة الحالية للرأسمالية على المستوى الكوكبي.</div>
+                <div class="reference">📄 المرجع: الصورة الثانية (WhatsApp Image) | Chapitre 3</div>
+            </div>
         </div>
 
-        <div class="section-card">
-            <div class="badge">Instruments de mesure : PIB / PNB / أدوات القياس</div>
-            <div class="fr"><strong>FR :</strong> 
-                <ul>
-                    <li><strong>PIB (Produit Intérieur Brut) :</strong> somme des valeurs ajoutées produites par les résidents (personnes ou entreprises) se trouvant sur le territoire d'un pays, quelle que soit leur nationalité. Logique territoriale.</li>
-                    <li><strong>PNB (Produit National Brut) :</strong> somme des valeurs ajoutées produites par les nationaux (citoyens du pays), quel que soit leur lieu de résidence (à l'intérieur ou à l'extérieur). Logique nationale.</li>
-                </ul>
+        <div class="page">
+            <h2>📊 الفصل الرابع: النمو، التنمية، التضخم، البطالة، الفقر<br>Chapitre 4 : Croissance, développement, inflation, chômage, pauvreté</h2>
+
+            <div class="section-card">
+                <div class="badge">Définition de la croissance économique / تعريف النمو الاقتصادي</div>
+                <div class="fr"><strong>FR :</strong> La croissance économique est un accroissement durant une longue période de la performance économique. Elle est mesurée par le PIB (Produit intérieur brut) ou le PNB (Produit national brut). C'est un processus quantitatif qui se traduit par l'augmentation de la production de biens et services (marchands et non marchands) sur un territoire donné, mesurée par le taux d'évolution du PIB en volume (sans inflation).</div>
+                <div class="ar"><strong>العربية :</strong> النمو الاقتصادي هو زيادة في الأداء الاقتصادي خلال فترة طويلة. يُقاس بالناتج المحلي الإجمالي (PIB) أو الناتج القومي الإجمالي (PNB). إنها عملية كمية تترجم بزيادة إنتاج السلع والخدمات (سوقية وغير سوقية) في إقليم معين، ويُقاس بمعدل تطور الناتج المحلي الإجمالي الحقيقي (بدون تضخم).</div>
+                <div class="reference">📄 المرجع: support4-PES-S4.pdf | Chapitre 4 | Page 2 + support5-PES-S4 2.docx | Page 1</div>
             </div>
-            <div class="ar"><strong>العربية :</strong>
-                <ul>
-                    <li><strong>الناتج المحلي الإجمالي (PIB):</strong> مجموع القيم المضافة التي تنتجها الوحدات المقيمة داخل أراضي دولة ما، بغض النظر عن جنسيتها. منطق ترابي.</li>
-                    <li><strong>الناتج القومي الإجمالي (PNB):</strong> مجموع القيم المضافة التي ينتجها المواطنون (أبناء الدولة) أينما كانوا (داخل الوطن أو خارجه). منطق وطني.</li>
-                </ul>
-            </div>
-            
-            <div class="math-example">
-                <div class="fr-math"><strong>🧮 Exemple de calcul (PIB vs PNB) :</strong><br>
-                - <strong>PIB :</strong> Si la somme des Valeurs Ajoutées (VA) des entreprises nationales au pays = 1000 et des entreprises étrangères au pays = 200.<br>
-                <em>PIB = 1000 + 200 = 1200.</em><br>
-                - <strong>PNB :</strong> PNB = PIB + Revenus reçus de l'étranger - Revenus versés à l'étranger.<br>
-                Si les nationaux à l'étranger envoient 150 et on verse 50 aux étrangers :<br>
-                <em>PNB = 1200 + 150 - 50 = 1300.</em></div>
+
+            <div class="section-card">
+                <div class="badge">Instruments de mesure : PIB / PNB / أدوات القياس</div>
+                <div class="fr"><strong>FR :</strong> 
+                    <ul>
+                        <li><strong>PIB (Produit Intérieur Brut) :</strong> somme des valeurs ajoutées produites par les résidents (personnes ou entreprises) se trouvant sur le territoire d'un pays, quelle que soit leur nationalité. Logique territoriale.</li>
+                        <li><strong>PNB (Produit National Brut) :</strong> somme des valeurs ajoutées produites par les nationaux (citoyens du pays), quel que soit leur lieu de résidence (à l'intérieur ou à l'extérieur). Logique nationale.</li>
+                    </ul>
+                </div>
+                <div class="ar"><strong>العربية :</strong>
+                    <ul>
+                        <li><strong>الناتج المحلي الإجمالي (PIB):</strong> مجموع القيم المضافة التي تنتجها الوحدات المقيمة داخل أراضي دولة ما، بغض النظر عن جنسيتها. منطق ترابي.</li>
+                        <li><strong>الناتج القومي الإجمالي (PNB):</strong> مجموع القيم المضافة التي ينتجها المواطنون (أبناء الدولة) أينما كانوا (داخل الوطن أو خارجه). منطق وطني.</li>
+                    </ul>
+                </div>
                 
-                <div class="ar-math"><strong>🧮 مثال حسابي (الناتج المحلي الإجمالي مقابل الناتج القومي الإجمالي):</strong><br>
-                - <strong>PIB:</strong> إذا كان مجموع القيم المضافة للشركات الوطنية داخل البلد = 1000 والشركات الأجنبية داخل البلد = 200.<br>
-                <em>الناتج المحلي الإجمالي (PIB) = 1000 + 200 = 1200.</em><br>
-                - <strong>PNB:</strong> PNB = PIB + الدخل المحصل من المواطنين بالخارج - الدخل المدفوع للأجانب بالداخل.<br>
-                إذا أرسل المواطنون في الخارج 150 ودُفِع للأجانب 50:<br>
-                <em>الناتج القومي الإجمالي (PNB) = 1200 + 150 - 50 = 1300.</em></div>
+                <div class="math-example">
+                    <div class="fr-math"><strong>🧮 Exemple de calcul (PIB vs PNB) :</strong><br>
+                    - <strong>PIB :</strong> Si la somme des Valeurs Ajoutées (VA) des entreprises nationales au pays = 1000 et des entreprises étrangères au pays = 200.<br>
+                    <em>PIB = 1000 + 200 = 1200.</em><br>
+                    - <strong>PNB :</strong> PNB = PIB + Revenus reçus de l'étranger - Revenus versés à l'étranger.<br>
+                    Si les nationaux à l'étranger envoient 150 et on verse 50 aux étrangers :<br>
+                    <em>PNB = 1200 + 150 - 50 = 1300.</em></div>
+                    
+                    <div class="ar-math"><strong>🧮 مثال حسابي (الناتج المحلي الإجمالي مقابل الناتج القومي الإجمالي):</strong><br>
+                    - <strong>PIB:</strong> إذا كان مجموع القيم المضافة للشركات الوطنية داخل البلد = 1000 والشركات الأجنبية داخل البلد = 200.<br>
+                    <em>الناتج المحلي الإجمالي (PIB) = 1000 + 200 = 1200.</em><br>
+                    - <strong>PNB:</strong> PNB = PIB + الدخل المحصل من المواطنين بالخارج - الدخل المدفوع للأجانب بالداخل.<br>
+                    إذا أرسل المواطنون في الخارج 150 ودُفِع للأجانب 50:<br>
+                    <em>الناتج القومي الإجمالي (PNB) = 1200 + 150 - 50 = 1300.</em></div>
+                </div>
+                <div class="reference">📄 المرجع: support4-PES-S4.pdf | Chapitre 4 | Page 2</div>
             </div>
-            <div class="reference">📄 المرجع: support4-PES-S4.pdf | Chapitre 4 | Page 2</div>
-        </div>
 
-        <div class="section-card">
-            <div class="badge">Lien entre croissance économique et développement / العلاقة بين النمو والتنمية</div>
-            <div class="fr"><strong>FR :</strong> La croissance est un processus quantitatif (augmentation de la production), tandis que le développement est un processus qualitatif (transformations des structures économiques, sociales, politiques et mentales). Le développement désigne un processus qualitatif de transformations des structures économiques, sociales, politiques et mentales qui accompagnent et favorisent la croissance économique. La croissance est nécessaire mais pas suffisante pour le développement.</div>
-            <div class="ar"><strong>العربية :</strong> النمو هو عملية كمية (زيادة الإنتاج)، بينما التنمية هي عملية نوعية (تحولات في الهياكل الاقتصادية والاجتماعية والسياسية والذهنية). التنمية هي عملية نوعية من التحولات التي تصاحب وتعزز النمو الاقتصادي. النمو ضروري ولكنه غير كافٍ للتنمية.</div>
-            <div class="reference">📄 المرجع: support5-PES-S4 2.docx | Page 2</div>
-        </div>
-
-        <div class="section-card">
-            <div class="badge">Avantages et inconvénients des indicateurs de croissance (PIB/PNB) / مزايا وعيوب مؤشرات النمو</div>
-            <table>
-                <thead><tr><th>Indicateur</th><th>Avantages / مزايا</th><th>Inconvénients / عيوب</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <td>PIB</th>
-                        <td>Permet des comparaisons entre pays, mesure la production totale, reflète l'activité économique territoriale.</th>
-                        <td>Ne mesure pas la qualité de vie, ignore le travail domestique et bénévole (30-40% du PIB), comptabilise négativement les externalités (pollution, embouteillages), ignore les inégalités et l'environnement.</th>
-                    </tr>
-                    <tr>
-                        <td>PNB</th>
-                        <td>Reflète la contribution des nationaux, utile pour les pays avec forte diaspora.</th>
-                        <td>Mêmes limites que le PIB, plus difficile à calculer, ne dit rien sur la répartition.</th>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="reference">📄 المرجع: support5-PES-S4 2.docx | Page 1-2</div>
-        </div>
-
-        <div class="section-card">
-            <div class="badge">Développement et IDH / التنمية ومؤشر التنمية البشرية</div>
-            <div class="fr"><strong>FR :</strong> Le développement est une notion difficile à mesurer. En 1990, le PNUD (Programme des Nations Unies pour le Développement) a créé l'IDH (Indice de Développement Humain) à partir de trois éléments : 
-                <ol>
-                    <li>Le niveau de vie (PIB/hab en parité de pouvoir d'achat).</li>
-                    <li>Le niveau d'éducation (taux d'alphabétisation des adultes + taux de scolarisation).</li>
-                    <li>Le niveau de santé (espérance de vie à la naissance).</li>
-                </ol>
-                Chaque dimension compte pour 1/3. L'indice est compris entre 0 et 1 ; plus il est proche de 1, plus il est favorable.
+            <div class="section-card">
+                <div class="badge">Lien entre croissance économique et développement / العلاقة بين النمو والتنمية</div>
+                <div class="fr"><strong>FR :</strong> La croissance est un processus quantitatif (augmentation de la production), tandis que le développement est un processus qualitatif (transformations des structures économiques, sociales, politiques et mentales). Le développement désigne un processus qualitatif de transformations des structures économiques, sociales, politiques et mentales qui accompagnent et favorisent la croissance économique. La croissance est nécessaire mais pas suffisante pour le développement.</div>
+                <div class="ar"><strong>العربية :</strong> النمو هو عملية كمية (زيادة الإنتاج)، بينما التنمية هي عملية نوعية (تحولات في الهياكل الاقتصادية والاجتماعية والسياسية والذهنية). التنمية هي عملية نوعية من التحولات التي تصاحب وتعزز النمو الاقتصادي. النمو ضروري ولكنه غير كافٍ للتنمية.</div>
+                <div class="reference">📄 المرجع: support5-PES-S4 2.docx | Page 2</div>
             </div>
-            <div class="ar"><strong>العربية :</strong> التنمية مفهوم يصعب قياسه. في عام 1990، أنشأ برنامج الأمم المتحدة الإنمائي (PNUD) مؤشر التنمية البشرية (IDH) من ثلاثة عناصر:
-                <ol>
-                    <li>مستوى المعيشة (الناتج المحلي الإجمالي للفرد بتعادل القوة الشرائية).</li>
-                    <li>مستوى التعليم (نسبة محو الأمية للبالغين + نسبة الالتحاق بالمدارس).</li>
-                    <li>مستوى الصحة (متوسط العمر المتوقع عند الولادة).</li>
-                </ol>
-                لكل بعد ثلث المؤشر. يتراوح المؤشر بين 0 و1؛ وكلما اقترب من 1 كان أفضل.
+
+            <div class="section-card">
+                <div class="badge">Avantages et inconvénients des indicateurs de croissance (PIB/PNB) / مزايا وعيوب مؤشرات النمو</div>
+                <table>
+                    <thead><tr><th>Indicateur</th><th>Avantages / مزايا</th><th>Inconvénients / عيوب</th></tr></thead>
+                    <tbody>
+                        <tr><td>PIB</th><td>Permet des comparaisons entre pays, mesure la production totale, reflète l'activité économique territoriale.</td><td>Ne mesure pas la qualité de vie, ignore le travail domestique et bénévole (30-40% du PIB), comptabilise négativement les externalités (pollution, embouteillages), ignore les inégalités et l'environnement.</td></tr>
+                        <tr><th>PNB</th><td>Reflète la contribution des nationaux, utile pour les pays avec forte diaspora.</td><td>Mêmes limites que le PIB, plus difficile à calculer, ne dit rien sur la répartition.</td></tr>
+                    </tbody>
+                </table>
+                <div class="reference">📄 المرجع: support5-PES-S4 2.docx | Page 1-2</div>
             </div>
-            
-            <div class="math-example">
-                <div class="fr-math"><strong>🧮 Exemple de calcul (IDH) :</strong><br>
-                L'IDH (version de base) se calcule par la moyenne des 3 indices (Niveau de vie, Éducation, Santé) :<br>
-                <em>IDH = (Indice Niveau de vie + Indice Éducation + Indice Santé) / 3</em><br>
-                Si un pays a : Indice Santé = 0.850, Indice Éducation = 0.750, Indice Niveau de vie = 0.800.<br>
-                <em>IDH = (0.850 + 0.750 + 0.800) / 3 = 2.400 / 3 = 0.800.</em></div>
+
+            <div class="section-card">
+                <div class="badge">Développement et IDH / التنمية ومؤشر التنمية البشرية</div>
+                <div class="fr"><strong>FR :</strong> Le développement est une notion difficile à mesurer. En 1990, le PNUD (Programme des Nations Unies pour le Développement) a créé l'IDH (Indice de Développement Humain) à partir de trois éléments : 
+                    <ol>
+                        <li>Le niveau de vie (PIB/hab en parité de pouvoir d'achat).</li>
+                        <li>Le niveau d'éducation (taux d'alphabétisation des adultes + taux de scolarisation).</li>
+                        <li>Le niveau de santé (espérance de vie à la naissance).</li>
+                    </ol>
+                    Chaque dimension compte pour 1/3. L'indice est compris entre 0 et 1 ; plus il est proche de 1, plus il est favorable.
+                </div>
+                <div class="ar"><strong>العربية :</strong> التنمية مفهوم يصعب قياسه. في عام 1990، أنشأ برنامج الأمم المتحدة الإنمائي (PNUD) مؤشر التنمية البشرية (IDH) من ثلاثة عناصر:
+                    <ol>
+                        <li>مستوى المعيشة (الناتج المحلي الإجمالي للفرد بتعادل القوة الشرائية).</li>
+                        <li>مستوى التعليم (نسبة محو الأمية للبالغين + نسبة الالتحاق بالمدارس).</li>
+                        <li>مستوى الصحة (متوسط العمر المتوقع عند الولادة).</li>
+                    </ol>
+                    لكل بعد ثلث المؤشر. يتراوح المؤشر بين 0 و1؛ وكلما اقترب من 1 كان أفضل.
+                </div>
                 
-                <div class="ar-math"><strong>🧮 مثال حسابي (مؤشر التنمية البشرية):</strong><br>
-                يُحسب المؤشر (في صيغته المبسطة) كمتوسط للمؤشرات الثلاثة:<br>
-                <em>مؤشر التنمية البشرية (IDH) = (مؤشر المعيشة + مؤشر التعليم + مؤشر الصحة) / 3</em><br>
-                إذا كان لبلد ما: مؤشر الصحة = 0.850، مؤشر التعليم = 0.750، ومؤشر المعيشة = 0.800.<br>
-                <em>IDH = (0.850 + 0.750 + 0.800) / 3 = 2.400 / 3 = 0.800.</em></div>
+                <div class="math-example">
+                    <div class="fr-math"><strong>🧮 Exemple de calcul (IDH) :</strong><br>
+                    L'IDH (version de base) se calcule par la moyenne des 3 indices (Niveau de vie, Éducation, Santé) :<br>
+                    <em>IDH = (Indice Niveau de vie + Indice Éducation + Indice Santé) / 3</em><br>
+                    Si un pays a : Indice Santé = 0.850, Indice Éducation = 0.750, Indice Niveau de vie = 0.800.<br>
+                    <em>IDH = (0.850 + 0.750 + 0.800) / 3 = 2.400 / 3 = 0.800.</em></div>
+                    
+                    <div class="ar-math"><strong>🧮 مثال حسابي (مؤشر التنمية البشرية):</strong><br>
+                    يُحسب المؤشر (في صيغته المبسطة) كمتوسط للمؤشرات الثلاثة:<br>
+                    <em>مؤشر التنمية البشرية (IDH) = (مؤشر المعيشة + مؤشر التعليم + مؤشر الصحة) / 3</em><br>
+                    إذا كان لبلد ما: مؤشر الصحة = 0.850، مؤشر التعليم = 0.750، ومؤشر المعيشة = 0.800.<br>
+                    <em>IDH = (0.850 + 0.750 + 0.800) / 3 = 2.400 / 3 = 0.800.</em></div>
+                </div>
+                <div class="reference">📄 المرجع: support5-PES-S4 2.docx | Page 2-3</div>
             </div>
-            <div class="reference">📄 المرجع: support5-PES-S4 2.docx | Page 2-3</div>
-        </div>
 
-        <div class="section-card">
-            <div class="badge">Avantages et inconvénients de l'IDH / مزايا وعيوب مؤشر التنمية البشرية</div>
-            <table>
-                <thead><tr><th>Avantages / مزايا</th><th>Inconvénients / عيوب</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <td>Multidimensionnel (prend en compte plus que le seul revenu).</th>
-                        <td>Le PIB/hab occupe une place importante (1/3).</th>
-                    </tr>
-                    <tr>
-                        <td>Permet des comparaisons internationales.</th>
-                        <td>Peu d'écart entre pays proches (différences peu significatives).</th>
-                    </tr>
-                    <tr>
-                        <td>Simple et compréhensible.</th>
-                        <td>Ne dit rien sur les inégalités (de revenu, de genre, entre générations).</th>
-                    </tr>
-                    <tr>
-                        <td>Développé par une institution reconnue (PNUD).</th>
-                        <td>Ignore l'environnement, les droits politiques, la sécurité, les conditions de travail, la qualité de vie.</th>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="fr"><strong>FR :</strong> Le rapport de la Commission Stiglitz (14 septembre 2009) a recommandé 12 améliorations : se référer aux revenus et à la consommation, privilégier le point de vue des ménages, prendre en compte le patrimoine, accorder plus d'importance à la répartition (médiane), élargir aux activités non marchandes, améliorer les mesures de santé/éducation/environnement, évaluer les inégalités de façon exhaustive, réaliser des enquêtes subjectives, mesurer la soutenabilité.</div>
-            <div class="ar"><strong>العربية :</strong> توصيات تقرير لجنة ستيغليتز (14 سبتمبر 2009): الاعتماد على الدخل والاستهلاك، إعطاء أولوية لوجهة نظر الأسر، أخذ الثروة بعين الاعتبار، إيلاء أهمية أكبر للتوزيع (الوسيط)، التوسع إلى الأنشطة غير السوقية، تحسين قياسات الصحة والتعليم والبيئة، تقييم عدم المساواة بشكل شامل، إجراء استبيانات ذاتية، قياس الاستدامة.</div>
-            <div class="reference">📄 المرجع: support5-PES-S4 2.docx | Page 3-4</div>
-        </div>
-
-        <div class="section-card">
-            <div class="badge">Classement IDH / PNUD 2025 / ترتيب مؤشر التنمية البشرية 2025</div>
-            <div class="fr"><strong>FR :</strong> Selon le rapport PNUD 2025 :
-                <ul>
-                    <li>1er : Islande</li>
-                    <li>2e : Suisse</li>
-                    <li>3e : Norvège</li>
-                    <li>Maroc : 120e sur 193 pays (classe "développement humain élevé", IDH ~ 0,710).</li>
-                    <li>Tunisie : 105e.</li>
-                </ul>
+            <div class="section-card">
+                <div class="badge">Avantages et inconvénients de l'IDH / مزايا وعيوب مؤشر التنمية البشرية</div>
+                <table>
+                    <thead><tr><th>Avantages / مزايا</th><th>Inconvénients / عيوب</th></tr></thead>
+                    <tbody>
+                        <tr><td>Multidimensionnel (prend en compte plus que le seul revenu).</td><td>Le PIB/hab occupe une place importante (1/3).</td></tr>
+                        <tr><td>Permet des comparaisons internationales.</td><td>Peu d'écart entre pays proches (différences peu significatives).</td></tr>
+                        <tr><td>Simple et compréhensible.</td><td>Ne dit rien sur les inégalités (de revenu, de genre, entre générations).</td></tr>
+                        <tr><td>Développé par une institution reconnue (PNUD).</td><td>Ignore l'environnement, les droits politiques, la sécurité, les conditions de travail, la qualité de vie.</td></tr>
+                    </tbody>
+                </table>
+                <div class="fr"><strong>FR :</strong> Le rapport de la Commission Stiglitz (14 septembre 2009) a recommandé 12 améliorations : se référer aux revenus et à la consommation, privilégier le point de vue des ménages, prendre en compte le patrimoine, accorder plus d'importance à la répartition (médiane), élargir aux activités non marchandes, améliorer les mesures de santé/éducation/environnement, évaluer les inégalités de façon exhaustive, réaliser des enquêtes subjectives, mesurer la soutenabilité.</div>
+                <div class="ar"><strong>العربية :</strong> توصيات تقرير لجنة ستيغليتز (14 سبتمبر 2009): الاعتماد على الدخل والاستهلاك، إعطاء أولوية لوجهة نظر الأسر، أخذ الثروة بعين الاعتبار، إيلاء أهمية أكبر للتوزيع (الوسيط)، التوسع إلى الأنشطة غير السوقية، تحسين قياسات الصحة والتعليم والبيئة، تقييم عدم المساواة بشكل شامل، إجراء استبيانات ذاتية، قياس الاستدامة.</div>
+                <div class="reference">📄 المرجع: support5-PES-S4 2.docx | Page 3-4</div>
             </div>
-            <div class="ar"><strong>العربية :</strong> حسب تقرير برنامج الأمم المتحدة الإنمائي 2025:
-                <ul>
-                    <li>الأول: آيسلندا</li>
-                    <li>الثاني: سويسرا</li>
-                    <li>الثالث: النرويج</li>
-                    <li>المغرب: المرتبة 120 من 193 دولة (فئة "تنمية بشرية مرتفعة"، قيمة IDH حوالي 0,710).</li>
-                    <li>تونس: المرتبة 105.</li>
-                </ul>
+
+            <div class="section-card">
+                <div class="badge">Classement IDH / PNUD 2025 / ترتيب مؤشر التنمية البشرية 2025</div>
+                <div class="fr"><strong>FR :</strong> Selon le rapport PNUD 2025 :
+                    <ul>
+                        <li>1er : Islande</li>
+                        <li>2e : Suisse</li>
+                        <li>3e : Norvège</li>
+                        <li>Maroc : 120e sur 193 pays (classe "développement humain élevé", IDH ~ 0,710).</li>
+                        <li>Tunisie : 105e.</li>
+                    </ul>
+                </div>
+                <div class="ar"><strong>العربية :</strong> حسب تقرير برنامج الأمم المتحدة الإنمائي 2025:
+                    <ul>
+                        <li>الأول: آيسلندا</li>
+                        <li>الثاني: سويسرا</li>
+                        <li>الثالث: النرويج</li>
+                        <li>المغرب: المرتبة 120 من 193 دولة (فئة "تنمية بشرية مرتفعة"، قيمة IDH حوالي 0,710).</li>
+                        <li>تونس: المرتبة 105.</li>
+                    </ul>
+                </div>
+                <div class="reference">📄 المرجع: أضيف بناءً على طلبك (غير موجود في المرفقات الأصلية)</div>
             </div>
-            <div class="reference">📄 المرجع: أضيف بناءً على طلبك (غير موجود في المرفقات الأصلية)</div>
-        </div>
 
-        <div class="section-card">
-            <div class="badge">Inflation / التضخم</div>
-            <div class="fr"><strong>FR :</strong> L'inflation est un désordre monétaire, une hausse générale et durable des prix. Elle peut être déclenchée par une demande excessive, une hausse des coûts de production, ou une création monétaire trop rapide. C'est un problème économique et social car elle réduit le pouvoir d'achat, pénalise les épargnants, et peut générer des inégalités. Ses conséquences sont à la fois économiques (déséquilibres macroéconomiques) et sociales (baisse du niveau de vie des ménages modestes).</div>
-            <div class="ar"><strong>العربية :</strong> التضخم هو اضطراب نقدي، أي ارتفاع عام ومستمر في الأسعار. يمكن أن ينشأ عن طلب مفرط، أو ارتفاع تكاليف الإنتاج، أو خلق نقدي سريع جدًا. إنها مشكلة اقتصادية واجتماعية لأنها تقلل القوة الشرائية، وتضر بالمدخرين، ويمكن أن تولد تفاوتات. عواقبه اقتصادية (اختلالات كليّة) واجتماعية (انخفاض مستوى معيشة الأسر المتواضعة).</div>
-            
-            <div class="math-example">
-                <div class="fr-math"><strong>🧮 Exemple de calcul du taux d'inflation :</strong><br>
-                Si l'Indice des Prix à la Consommation (IPC) était de 120 en 2023 et passe à 126 en 2024.<br>
-                <em>Taux d'inflation = (IPC année n - IPC année n-1) / IPC année n-1 × 100</em><br>
-                <em>Taux d'inflation = (126 - 120) / 120 × 100 = 6 / 120 × 100 = 5%.</em><br>
-                Le niveau général des prix a augmenté de 5% entre 2023 et 2024.</div>
-                <div class="ar-math"><strong>🧮 مثال حسابي لمعدل التضخم :</strong><br>
-                إذا كان الرقم القياسي لأسعار المستهلك (IPC) يساوي 120 في 2023 وأصبح 126 في 2024.<br>
-                <em>معدل التضخم = (الرقم القياسي للسنة الحالية - الرقم القياسي للسنة السابقة) / الرقم القياسي للسنة السابقة × 100</em><br>
-                <em>معدل التضخم = (126 - 120) / 120 × 100 = 6 / 120 × 100 = 5%.</em><br>
-                                أي أن المستوى العام للأسعار ارتفع بنسبة 5٪ بين 2023 و 2024.</div>
+            <div class="section-card">
+                <div class="badge">Inflation / التضخم</div>
+                <div class="fr"><strong>FR :</strong> L'inflation est un désordre monétaire, une hausse générale et durable des prix. Elle peut être déclenchée par une demande excessive, une hausse des coûts de production, ou une création monétaire trop rapide. C'est un problème économique et social car elle réduit le pouvoir d'achat, pénalise les épargnants, et peut générer des inégalités. Ses conséquences sont à la fois économiques (déséquilibres macroéconomiques) et sociales (baisse du niveau de vie des ménages modestes).</div>
+                <div class="ar"><strong>العربية :</strong> التضخم هو اضطراب نقدي، أي ارتفاع عام ومستمر في الأسعار. يمكن أن ينشأ عن طلب مفرط، أو ارتفاع تكاليف الإنتاج، أو خلق نقدي سريع جدًا. إنها مشكلة اقتصادية واجتماعية لأنها تقلل القوة الشرائية، وتضر بالمدخرين، ويمكن أن تولد تفاوتات. عواقبه اقتصادية (اختلالات كليّة) واجتماعية (انخفاض مستوى معيشة الأسر المتواضعة).</div>
+                <div class="reference">📄 المرجع: support4-PES-S4.pdf | Chapitre 4 | Page 1 + الصورة الأولى (Screen Shot)</div>
             </div>
-            <div class="reference">📄 المرجع: support4-PES-S4.pdf | Chapitre 4 | Page 1 + الصورة الأولى (Screen Shot)</div>
-        </div>
 
-        <div class="section-card">
-            <div class="badge">Chômage / البطالة</div>
-            <div class="fr"><strong>FR :</strong> Selon le Bureau International du Travail (BIT), est chômeur toute personne âgée de plus de 15 ans, sans travail, immédiatement disponible, et recherchant activement un emploi (au moins un acte positif de recherche). Le chômage est un déséquilibre du marché du travail. Formes de chômage : frictionnel (entre deux emplois), saisonnier, conjoncturel (ralentissement économique), structurel (déséquilibre durable), technique (panne, pénurie), technologique (substitution capital/travail). Causes : coût du travail élevé, inadéquation offre/demande, faible investissement, concurrence internationale, restructurations, évolutions démographiques.</div>
-            <div class="ar"><strong>العربية :</strong> حسب مكتب العمل الدولي (BIT)، العاطل عن العمل هو كل شخص يزيد عمره عن 15 سنة، بدون عمل، متوفر فورًا، ويبحث بنشاط عن عمل (قام بخطوة إيجابية للبحث). البطالة هي اختلال في سوق العمل. أنواع البطالة: احتكاكية (بين وظيفتين)، موسمية، ظرفية (تباطؤ اقتصادي)، هيكلية (اختلال دائم)، تقنية (عطل، نقص)، تكنولوجية (استبدال رأس المال بالعمل). الأسباب: تكلفة عمل مرتفعة، عدم تطابق العرض والطلب، ضعف الاستثمار، منافسة دولية، إعادة هيكلة، تطورات ديموغرافية.</div>
-            
-            <div class="math-example">
-                <div class="fr-math"><strong>🧮 Exemple de calcul du taux de chômage :</strong><br>
-                Dans un pays, la population active (actifs) est de 25 millions de personnes. Le nombre de chômeurs est de 2,5 millions.<br>
-                <em>Taux de chômage = (Nombre de chômeurs / Population active) × 100</em><br>
-                <em>Taux de chômage = (2,5 millions / 25 millions) × 100 = 0,1 × 100 = 10%.</em></div>
-                <div class="ar-math"><strong>🧮 مثال حسابي لمعدل البطالة :</strong><br>
-                في إحدى الدول، يبلغ عدد السكان النشطين (القوة العاملة) 25 مليون نسمة. عدد العاطلين عن العمل هو 2,5 مليون.<br>
-                <em>معدل البطالة = (عدد العاطلين عن العمل / السكان النشطين) × 100</em><br>
-                <em>معدل البطالة = (2,5 مليون / 25 مليون) × 100 = 0,1 × 100 = 10%.</em></div>
+            <div class="section-card">
+                <div class="badge">Chômage / البطالة</div>
+                <div class="fr"><strong>FR :</strong> Selon le Bureau International du Travail (BIT), est chômeur toute personne âgée de plus de 15 ans, sans travail, immédiatement disponible, et recherchant activement un emploi (au moins un acte positif de recherche). Le chômage est un déséquilibre du marché du travail. Formes de chômage : frictionnel (entre deux emplois), saisonnier, conjoncturel (ralentissement économique), structurel (déséquilibre durable), technique (panne, pénurie), technologique (substitution capital/travail). Causes : coût du travail élevé, inadéquation offre/demande, faible investissement, concurrence internationale, restructurations, évolutions démographiques.</div>
+                <div class="ar"><strong>العربية :</strong> حسب مكتب العمل الدولي (BIT)، العاطل عن العمل هو كل شخص يزيد عمره عن 15 سنة، بدون عمل، متوفر فورًا، ويبحث بنشاط عن عمل (قام بخطوة إيجابية للبحث). البطالة هي اختلال في سوق العمل. أنواع البطالة: احتكاكية (بين وظيفتين)، موسمية، ظرفية (تباطؤ اقتصادي)، هيكلية (اختلال دائم)، تقنية (عطل، نقص)، تكنولوجية (استبدال رأس المال بالعمل). الأسباب: تكلفة عمل مرتفعة، عدم تطابق العرض والطلب، ضعف الاستثمار، منافسة دولية، إعادة هيكلة، تطورات ديموغرافية.</div>
+                <div class="reference">📄 المرجع: support5-PES-S4 2.docx | Page 4-5 + support4-PES-S4.pdf | Page 7</div>
             </div>
-            <div class="reference">📄 المرجع: support5-PES-S4 2.docx | Page 4-5 + support4-PES-S4.pdf | Page 7</div>
-        </div>
 
-        <div class="section-card">
-            <div class="badge">Pauvreté / الفقر</div>
-            <div class="fr"><strong>FR :</strong> La pauvreté correspond à une ou plusieurs situations jugées "inacceptables" ou "injustes" sur les plans économique et social (Asselin et al., 2000). C'est l'insuffisance de ressources matérielles (nourriture, eau, vêtements, logement) et intangibles (éducation, activité valorisante, respect). C'est un phénomène multidimensionnel, hétérogène, qui varie dans le temps et dans l'espace.</div>
-            <div class="ar"><strong>العربية :</strong> الفقر يتوافق مع حالة أو عدة حالات تعتبر "غير مقبولة" أو "ظالمة" اقتصادياً واجتماعياً (أسيلين وآخرون، 2000). إنه عدم كفاية الموارد المادية (غذاء، ماء، ملابس، سكن) وغير الملموسة (تعليم، نشاط ذو قيمة، احترام). إنها ظاهرة متعددة الأبعاد، غير متجانسة، تتغير في الزمان والمكان.</div>
-            <div class="reference">📄 المرجع: support6-PES-S4.pdf | Chapitre 4 | Page 5</div>
-        </div>
+            <div class="section-card">
+                <div class="badge">Pauvreté / الفقر</div>
+                <div class="fr"><strong>FR :</strong> La pauvreté correspond à une ou plusieurs situations jugées "inacceptables" ou "injustes" sur les plans économique et social (Asselin et al., 2000). C'est l'insuffisance de ressources matérielles (nourriture, eau, vêtements, logement) et intangibles (éducation, activité valorisante, respect). C'est un phénomène multidimensionnel, hétérogène, qui varie dans le temps et dans l'espace.</div>
+                <div class="ar"><strong>العربية :</strong> الفقر يتوافق مع حالة أو عدة حالات تعتبر "غير مقبولة" أو "ظالمة" اقتصادياً واجتماعياً (أسيلين وآخرون، 2000). إنه عدم كفاية الموارد المادية (غذاء، ماء، ملابس، سكن) وغير الملموسة (تعليم، نشاط ذو قيمة، احترام). إنها ظاهرة متعددة الأبعاد، غير متجانسة، تتغير في الزمان والمكان.</div>
+                <div class="reference">📄 المرجع: support6-PES-S4.pdf | Chapitre 4 | Page 5</div>
+            </div>
 
-        <div class="section-card">
-            <div class="badge">Différence entre pauvreté et inégalités / الفرق بين الفقر وعدم المساواة</div>
-            <table>
-                <thead><tr><th>Pauvreté / الفقر</th><th>Inégalités / عدم المساواة</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <td>Correspond à une situation jugée inacceptable sous un seuil.</th>
-                        <td>Correspond aux écarts de revenus, patrimoine, opportunités.</th>
-                    </tr>
-                    <tr>
-                        <td>Sous-ensemble de la population (ceux en dessous du seuil).</th>
-                        <td>Concerne toute la population (comparaison entre groupes).</th>
-                    </tr>
-                    <tr>
-                        <td>Peut être absolue ou relative.</th>
-                        <td>Toujours relative (par rapport aux autres).</th>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="reference">📄 المرجع: support6-PES-S4.pdf | Chapitre 4 | Page 4</div>
-        </div>
+            <div class="section-card">
+                <div class="badge">Différence entre pauvreté et inégalités / الفرق بين الفقر وعدم المساواة</div>
+                <table>
+                    <thead><tr><th>Pauvreté / الفقر</th><th>Inégalités / عدم المساواة</th></tr></thead>
+                    <tbody>
+                        <tr><td>Correspond à une situation jugée inacceptable sous un seuil.</td><td>Correspond aux écarts de revenus, patrimoine, opportunités.</td></tr>
+                        <tr><td>Sous-ensemble de la population (ceux en dessous du seuil).</td><td>Concerne toute la population (comparaison entre groupes).</td></tr>
+                        <tr><td>Peut être absolue ou relative.</td><td>Toujours relative (par rapport aux autres).</td></tr>
+                    </tbody>
+                </table>
+                <div class="reference">📄 المرجع: support6-PES-S4.pdf | Chapitre 4 | Page 4</div>
+            </div>
 
-        <div class="section-card">
-            <div class="badge">Approches de la pauvreté (avec auteurs) / مقاربات الفقر (مع المؤلفين)</div>
-            <table>
-                <thead><tr><th>Approche / مقاربة</th><th>Auteurs / المؤلفون</th><th>Idée clé / الفكرة الأساسية</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <td>Approche monétaire (Welfariste / Utilitariste) / المقاربة النقدية (الرفاهية / النفعية)</th>
-                        <td>Ravallion (1994), Banque mondiale</th>
-                        <td>Le bien-être est mesuré par le revenu ou la consommation. Un seuil monétaire (absolu ou relatif) délimite les pauvres. Soutenue par les welfaristes/utilitaristes (ressources = approximation du bien-être). <br><br><strong>العربية:</strong> يتم قياس الرفاهية بالدخل أو الاستهلاك. تحدد العتبة النقدية الفقراء. مدعومة من طرف الرفاهيين أو النفعيين (Welfaristes/Utilitaristes) لأن المنفعة غير قابلة للملاحظة فيتم تقريب الرفاهية بالموارد.</th>
-                    </tr>
-                    <tr>
-                        <td>Approche non monétaire (Non Welfariste - capacités) / المقاربة غير النقدية (غير الرفاهية - القدرات)</th>
-                        <td>Amartya Sen (1990)</th>
-                        <td>Le bien-être se place dans l'espace des libertés et des accomplissements. Soutenue par les non welfaristes. L'individu doit avoir des capacités fondamentales. <br><br><strong>العربية:</strong> الرفاهية تكمن في فضاء الحريات والإنجازات. مدعومة من طرف غير الرفاهيين (Non Welfaristes). يجب أن يمتلك الفرد قدرات أساسية.</th>
-                    </tr>
-                    <tr>
-                        <td>Approche non monétaire (Non Welfariste - besoins de base) / المقاربة غير النقدية (غير الرفاهية - الاحتياجات الأساسية)</th>
-                        <td>Alkire & Foster (2007, 2009), OPHI</th>
-                        <td>Un individu doit satisfaire certains besoins fondamentaux. Soutenue par les non welfaristes. À l'origine du MPI. <br><br><strong>العربية:</strong> يجب على الفرد تلبية احتياجات أساسية معينة. مدعومة من طرف غير الرفاهيين (Non Welfaristes). أصل مؤشر الفقر متعدد الأبعاد (MPI).</th>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="fr"><strong>FR :</strong> La diversité des approches montre que la définition et la mesure de la pauvreté est un exercice difficile. Le nombre de pauvres et leur portrait reste protéiforme selon ces approches. La pauvreté est un paradigme empreint de conventions et d'actes normatifs.</div>
-            <div class="ar"><strong>العربية :</strong> يظهر تنوع المقاربات أن تعريف وقياس الفقر مهمة صعبة. عدد الفقراء وخصائصهم يظل متعدد الأشكال حسب هذه المقاربات. الفقر هو نموذج مليء بالأعراف والأفعال المعيارية.</div>
-            <div class="reference">📄 المرجع: support6-PES-S4.pdf | Chapitre 4 | Pages 6-20</div>
-        </div>
+            <div class="section-card">
+                <div class="badge">Approches de la pauvreté (avec auteurs) / مقاربات الفقر (مع المؤلفين)</div>
+                <table>
+                    <thead><tr><th>Approche / مقاربة</th><th>Auteurs / المؤلفون</th><th>Idée clé / الفكرة الأساسية</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>Approche monétaire (Welfariste / Utilitariste) / المقاربة النقدية (الرفاهية / النفعية)</td>
+                            <td>Ravallion (1994), Banque mondiale</td>
+                            <td>Le bien-être est mesuré par le revenu ou la consommation. Un seuil monétaire (absolu ou relatif) délimite les pauvres. Soutenue par les welfaristes/utilitaristes (ressources = approximation du bien-être). <br><br><strong>العربية:</strong> يتم قياس الرفاهية بالدخل أو الاستهلاك. تحدد العتبة النقدية الفقراء. مدعومة من طرف الرفاهيين أو النفعيين (Welfaristes/Utilitaristes) لأن المنفعة غير قابلة للملاحظة فيتم تقريب الرفاهية بالموارد.</td>
+                        </tr>
+                        <tr>
+                            <td>Approche non monétaire (Non Welfariste - capacités) / المقاربة غير النقدية (غير الرفاهية - القدرات)</td>
+                            <td>Amartya Sen (1990)</td>
+                            <td>Le bien-être se place dans l'espace des libertés et des accomplissements. Soutenue par les non welfaristes. L'individu doit avoir des capacités fondamentales. <br><br><strong>العربية:</strong> الرفاهية تكمن في فضاء الحريات والإنجازات. مدعومة من طرف غير الرفاهيين (Non Welfaristes). يجب أن يمتلك الفرد قدرات أساسية.</td>
+                        </tr>
+                        <tr>
+                            <td>Approche non monétaire (Non Welfariste - besoins de base) / المقاربة غير النقدية (غير الرفاهية - الاحتياجات الأساسية)</td>
+                            <td>Alkire & Foster (2007, 2009), OPHI</td>
+                            <td>Un individu doit satisfaire certains besoins fondamentaux. Soutenue par les non welfaristes. À l'origine du MPI. <br><br><strong>العربية:</strong> يجب على الفرد تلبية احتياجات أساسية معينة. مدعومة من طرف غير الرفاهيين (Non Welfaristes). أصل مؤشر الفقر متعدد الأبعاد (MPI).</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="fr"><strong>FR :</strong> La diversité des approches montre que la définition et la mesure de la pauvreté est un exercice difficile. Le nombre de pauvres et leur portrait reste protéiforme selon ces approches. La pauvreté est un paradigme empreint de conventions et d'actes normatifs.</div>
+                <div class="ar"><strong>العربية :</strong> يظهر تنوع المقاربات أن تعريف وقياس الفقر مهمة صعبة. عدد الفقراء وخصائصهم يظل متعدد الأشكال حسب هذه المقاربات. الفقر هو نموذج مليء بالأعراف والأفعال المعيارية.</div>
+                <div class="reference">📄 المرجع: support6-PES-S4.pdf | Chapitre 4 | Pages 6-20</div>
+            </div>
 
-        <div class="section-card">
-            <div class="badge">Seuils de pauvreté (exemple Maroc / HCP) / عتبات الفقر (مثال المغرب)</div>
-            <div class="fr"><strong>FR :</strong> Au Maroc, le HCP (Haut-Commissariat au Plan) utilise l'approche monétaire de la Banque mondiale. Le seuil de pauvreté alimentaire est approché par le coût d'un panier alimentaire permettant l'apport calorique minimum requis (1984 kilocalories par jour/personne, norme FAO/OMS). En 2014, ce seuil était de 2331 DH/personne/an (identique urbain/rural). Le seuil de pauvreté monétaire = seuil alimentaire + allocation non-alimentaire (coût des acquisitions non-alimentaires des ménages atteignant juste le minimum alimentaire). En 2014 : 4667 DH (urbain) et 4312 DH (rural). La France fixe le seuil de pauvreté à 60% du revenu médian (approche relative).</div>
-            <div class="ar"><strong>العربية :</strong> في المغرب، تستخدم المندوبية السامية للتخطيط (HCP) المقاربة النقدية للبنك الدولي. يتم تقدير حد الفقر الغذائي بتكلفة سلة غذائية توفر الحد الأدنى المطلوب من السعرات الحرارية (1984 كيلو كالوري في اليوم للشخص، معيار الفاو/منظمة الصحة العالمية). في 2014، كان هذا الحد 2331 درهم/شخص/سنة (متطابق حضري/قروي). حد الفقر النقدي = حد الفقر الغذائي + مخصص غير غذائي (تكلفة الاقتناءات غير الغذائية للأسر التي تصل بالكاد إلى الحد الأدنى الغذائي). في 2014: 4667 درهم (حضري) و 4312 درهم (قروي). تحدد فرنسا حد الفقر بنسبة 60٪ من الدخل الوسيط (مقاربة نسبية).</div>
-            
-            <div class="math-example">
-                <div class="fr-math"><strong>🧮 Exemples de calcul (Seuils de pauvreté) :</strong><br>
-                - <strong>Seuil monétaire (Maroc - HCP 2014 Urbain) :</strong><br>
-                <em>Seuil monétaire = Seuil alimentaire + Allocation non-alimentaire.</em><br>
-                <em>Seuil = 2331 DH + 2336 DH = 4667 DH / an.</em><br><br>
+            <div class="section-card">
+                <div class="badge">Seuils de pauvreté (exemple Maroc / HCP) / عتبات الفقر (مثال المغرب)</div>
+                <div class="fr"><strong>FR :</strong> Au Maroc, le HCP (Haut-Commissariat au Plan) utilise l'approche monétaire de la Banque mondiale. Le seuil de pauvreté alimentaire est approché par le coût d'un panier alimentaire permettant l'apport calorique minimum requis (1984 kilocalories par jour/personne, norme FAO/OMS). En 2014, ce seuil était de 2331 DH/personne/an (identique urbain/rural). Le seuil de pauvreté monétaire = seuil alimentaire + allocation non-alimentaire (coût des acquisitions non-alimentaires des ménages atteignant juste le minimum alimentaire). En 2014 : 4667 DH (urbain) et 4312 DH (rural). La France fixe le seuil de pauvreté à 60% du revenu médian (approche relative).</div>
+                <div class="ar"><strong>العربية :</strong> في المغرب، تستخدم المندوبية السامية للتخطيط (HCP) المقاربة النقدية للبنك الدولي. يتم تقدير حد الفقر الغذائي بتكلفة سلة غذائية توفر الحد الأدنى المطلوب من السعرات الحرارية (1984 كيلو كالوري في اليوم للشخص، معيار الفاو/منظمة الصحة العالمية). في 2014، كان هذا الحد 2331 درهم/شخص/سنة (متطابق حضري/قروي). حد الفقر النقدي = حد الفقر الغذائي + مخصص غير غذائي (تكلفة الاقتناءات غير الغذائية للأسر التي تصل بالكاد إلى الحد الأدنى الغذائي). في 2014: 4667 درهم (حضري) و 4312 درهم (قروي). تحدد فرنسا حد الفقر بنسبة 60٪ من الدخل الوسيط (مقاربة نسبية).</div>
                 
-                - <strong>Seuil relatif (Exemple type France) :</strong><br>
-                <em>Seuil = Revenu médian × 60%</em><br>
-                Si le revenu médian d'une population est de 2000 € / mois.<br>
-                <em>Seuil de pauvreté = 2000 × 0.60 = 1200 €.</em></div>
-                
-                <div class="ar-math"><strong>🧮 أمثلة حسابية (عتبات الفقر):</strong><br>
-                - <strong>الحد النقدي (المغرب - المندوبية السامية للتخطيط 2014 الوسط الحضري):</strong><br>
-                <em>حد الفقر النقدي = حد الفقر الغذائي + المخصص غير الغذائي.</em><br>
-                <em>الحد الإجمالي = 2331 درهم + 2336 درهم = 4667 درهم / سنة.</em><br><br>
-                
-                - <strong>الحد النسبي (حسب النموذج الفرنسي):</strong><br>
-                <em>حد الفقر = الدخل الوسيط × 60٪</em><br>
-                إذا كان الدخل الوسيط للساكنة هو 2000 يورو / شهر.<br>
-                <em>حد الفقر = 2000 × 0.60 = 1200 يورو.</em></div>
+                <div class="math-example">
+                    <div class="fr-math"><strong>🧮 Exemples de calcul (Seuils de pauvreté) :</strong><br>
+                    - <strong>Seuil monétaire (Maroc - HCP 2014 Urbain) :</strong><br>
+                    <em>Seuil monétaire = Seuil alimentaire + Allocation non-alimentaire.</em><br>
+                    <em>Seuil = 2331 DH + 2336 DH = 4667 DH / an.</em><br><br>
+                    
+                    - <strong>Seuil relatif (Exemple type France) :</strong><br>
+                    <em>Seuil = Revenu médian × 60%</em><br>
+                    Si le revenu médian d'une population est de 2000 € / mois.<br>
+                    <em>Seuil de pauvreté = 2000 × 0.60 = 1200 €.</em></div>
+                    
+                    <div class="ar-math"><strong>🧮 أمثلة حسابية (عتبات الفقر):</strong><br>
+                    - <strong>الحد النقدي (المغرب - المندوبية السامية للتخطيط 2014 الوسط الحضري):</strong><br>
+                    <em>حد الفقر النقدي = حد الفقر الغذائي + المخصص غير الغذائي.</em><br>
+                    <em>الحد الإجمالي = 2331 درهم + 2336 درهم = 4667 درهم / سنة.</em><br><br>
+                    
+                    - <strong>الحد النسبي (حسب النموذج الفرنسي):</strong><br>
+                    <em>حد الفقر = الدخل الوسيط × 60٪</em><br>
+                    إذا كان الدخل الوسيط للساكنة هو 2000 يورو / شهر.<br>
+                    <em>حد الفقر = 2000 × 0.60 = 1200 يورو.</em></div>
+                </div>
+                <div class="reference">📄 المرجع: support6-PES-S4.pdf | Chapitre 4 | Pages 31-34</div>
             </div>
-            <div class="reference">📄 المرجع: support6-PES-S4.pdf | Chapitre 4 | Pages 31-34</div>
         </div>
+
+        <div class="page">
+            <h2>📌 صفحة الملحق: مفاهيم موجودة في المرفقات ولم تطلب في أسئلتك<br>Annexe : concepts présents dans les fichiers mais non demandés</h2>
+            <div class="section-card">
+                <div class="badge">Autres notions importantes / مفاهيم أخرى مهمة</div>
+                <div class="fr"><strong>FR :</strong> 
+                    <ul>
+                        <li><strong>Proto-industrialisation :</strong> système intermédiaire avant l'industrialisation moderne (industries rurales, putting-out system, marchand-manufacturier). Caractérisée par l'absence de volonté d'amélioration, production lente, distribution lente, nombre limité de travailleurs.</li>
+                        <li><strong>Croissance extensive vs intensive :</strong> extensive = utiliser plus de facteurs (travail, capital) ; intensive = utiliser mieux les facteurs (gains de productivité, progrès technique).</li>
+                        <li><strong>Croissance molle :</strong> taux de croissance annuels assez faibles.</li>
+                        <li><strong>Facteurs de croissance liés à l'offre :</strong> facteur travail (quantité et qualité), facteur capital (capital-argent et capital technique), progrès technique et innovations, ressources naturelles.</li>
+                        <li><strong>Facteurs de croissance liés à la demande :</strong> consommation et investissement, dépenses publiques, échanges extérieurs, contexte institutionnel (droits de propriété, réglementation).</li>
+                        <li><strong>Pauvreté absolue (selon B.R. Rowntree) :</strong> la non satisfaction ou juste la satisfaction d'un minimum vital (nourriture, logement, vêtements).</li>
+                        <li><strong>Pauvreté relative (selon l'OCDE) :</strong> définir la pauvreté par rapport aux revenus de la population (ex: individu ayant un revenu inférieur aux deux tiers du revenu moyen).</li>
+                        <li><strong>Pauvreté absolue vs relative (selon PNUD) :</strong> extrême pauvreté = ne pas satisfaire les besoins alimentaires essentiels ; pauvreté générale = insuffisance pour besoins alimentaires + non alimentaires ; pauvreté humaine = absence de capacités humaines de base (analphabétisme, malnutrition, mauvaise santé).</li>
+                        <li><strong>Pauvreté humaine (PNUD) :</strong> absence des capacités humaines de base : analphabétisme, malnutrition, longévité réduite, mauvaise santé maternelle, maladie évitable.</li>
+                        <li><strong>Externalités négatives :</strong> non prises en compte par le PIB (pollution, embouteillages, accidents).</li>
+                        <li><strong>Économie mixte :</strong> rôle de l'État + marché, modèle dominant actuel.</li>
+                        <li><strong>Différentes visions de la croissance chez les économistes :</strong> Adam Smith (division du travail, croissance illimitée), Malthus (famines), Ricardo (rendement décroissant, état stationnaire), Marx (accumulation du capital → chômage → baisse de la consommation), Keynes (rôle de l'État par investissements publics).</li>
+                    </ul>
+                </div>
+                <div class="ar"><strong>العربية :</strong>
+                    <ul>
+                        <li><strong>التمهيد الصناعي (Proto-industrialisation):</strong> نظام وسيط قبل التصنيع الحديث (صناعات ريفية، نظام "putting-out"، تاجر-صانع). يتميز بغياب الرغبة في التحسين، إنتاج بطيء، توزيع بطيء، عدد محدود من العمال.</li>
+                        <li><strong>النمو الموسع مقابل النمو المكثف:</strong> الموسع = استخدام المزيد من عوامل الإنتاج؛ المكثف = استخدام أفضل لعوامل الإنتاج (مكاسب الإنتاجية، التقدم التقني).</li>
+                        <li><strong>النمو الناعم:</strong> معدلات نمو سنوية ضعيفة نوعًا ما.</li>
+                        <li><strong>عوامل النمو المرتبطة بالعرض:</strong> عامل العمل (كمًا ونوعًا)، عامل رأس المال (رأس مال نقدي ورأس مال تقني)، التقدم التقني والابتكارات، الموارد الطبيعية.</li>
+                        <li><strong>عوامل النمو المرتبطة بالطلب:</strong> الاستهلاك والاستثمار، الإنفاق العام، التبادلات الخارجية، السياق المؤسسي (حقوق الملكية، التنظيم).</li>
+                        <li><strong>الفقر المطلق (حسب B.R. Rowntree):</strong> عدم تلبية أو بالكاد تلبية الحد الأدنى الحيوي للعيش (غذاء، سكن، ملابس).</li>
+                        <li><strong>الفقر النسبي (حسب OCDE):</strong> تحديد الفقر مقارنة بدخل الساكنة ككل (مثال: الفرد الذي يقل دخله عن ثلثي الدخل المتوسط).</li>
+                        <li><strong>الفقر المطلق مقابل الفقر النسبي (حسب برنامج الأمم المتحدة الإنمائي):</strong> الفقر المدقع = عدم تلبية الاحتياجات الغذائية الأساسية؛ الفقر العام = عدم كفاية للاحتياجات الغذائية وغير الغذائية؛ الفقر البشري = غياب القدرات البشرية الأساسية (أمية، سوء تغذية، صحة أمومة سيئة).</li>
+                        <li><strong>الآثار الخارجية السلبية:</strong> لا تؤخذ بعين الاعتبار في الناتج المحلي الإجمالي (تلوث، ازدحام، حوادث).</li>
+                        <li><strong>الاقتصاد المختلط:</strong> دور الدولة + السوق، النموذج المسيطر حاليًا.</li>
+                        <li><strong>رؤى مختلفة للنمو عند الاقتصاديين:</strong> آدم سميث (تقسيم العمل، نمو غير محدود)، مالتوس (مجاعات)، ريكاردو (غلة متناقصة، حالة راكدة)، ماركس (تراكم رأس المال → بطالة → انخفاض الاستهلاك)، كينز (دور الدولة عبر الاستثمارات العامة).</li>
+                    </ul>
+                </div>
+                <div class="reference">📄 المرجع: support1-PES-S4.docx, support2-PES-S4.pdf, support4-PES-S4.pdf, support5-PES-S4 2.docx, support6-PES-S4.pdf</div>
+            </div>
+            <div class="section-card">
+                <div class="badge">Limites du PIB mentionnées dans les fichiers / حدود الناتج المحلي الإجمالي المذكورة في المرفقات</div>
+                <div class="fr">✔ Ne mesure pas la qualité de vie.<br>✔ Ignore les activités non monétisées (travail domestique, bénévolat).<br>✔ Comptabilise positivement les nuisances (transport pour aller au travail = pollution, embouteillages, accidents).<br>✔ Ne dit rien sur la répartition des richesses.<br>✔ Ignore les atteintes à l'environnement (ressources naturelles).<br>✔ Sous-évalue la production non marchande (évaluée au coût de production).</div>
+                <div class="ar">✔ لا يقيس جودة الحياة.<br>✔ يتجاهل الأنشطة غير النقدية (العمل المنزلي، التطوع).<br>✔ يحصي بشكل إيجابي الأضرار (النقل إلى العمل = تلوث، ازدحام، حوادث).<br>✔ لا يخبرنا شيئًا عن توزيع الثروات.<br>✔ يتجاهل الأضرار البيئية (الموارد الطبيعية).<br>✔ يقلل من قيمة الإنتاج غير السوقي (يُقيّم بتكلفة الإنتاج).</div>
+                <div class="reference">📄 المرجع: support5-PES-S4 2.docx | Page 1</div>
+            </div>
+            <div class="section-card">
+                <div class="badge">Types de chômage détaillés / أنواع البطالة مفصلة</div>
+                <div class="fr">✔ Chômage frictionnel (entre deux emplois volontaires).<br>✔ Chômage saisonnier (activités saisonnières).<br>✔ Chômage conjoncturel (ralentissement économique).<br>✔ Chômage structurel (déséquilibre durable du marché du travail).<br>✔ Chômage technique (interruption temporaire de production).<br>✔ Chômage technologique (substitution capital/travail).</div>
+                <div class="ar">✔ بطالة احتكاكية (بين وظيفتين طوعيتين).<br>✔ بطالة موسمية (أنشطة موسمية).<br>✔ بطالة ظرفية (تباطؤ اقتصادي).<br>✔ بطالة هيكلية (اختلال دائم في سوق العمل).<br>✔ بطالة تقنية (انقطاع تقني مؤقت للإنتاج).<br>✔ بطالة تكنولوجية (استبدال رأس المال بالعمل).</div>
+                <div class="reference">📄 المرجع: support5-PES-S4 2.docx | Page 4</div>
+            </div>
+            <div class="section-card">
+                <div class="badge">Différences entre PIB et PNB (rappels) / الفروق بين الناتج المحلي والناتج القومي (تذكير)</div>
+                <div class="fr">PIB = logique territoriale ; PNB = logique nationale.<br>PIB = somme des VA des résidents sur le territoire ; PNB = somme des VA des nationaux où qu'ils soient.</div>
+                <div class="ar">PIB = منطق ترابي؛ PNB = منطق وطني.<br>PIB = مجموع القيم المضافة للمقيمين على الأراضي؛ PNB = مجموع القيم المضافة للمواطنين أينما كانوا.</div>
+                <div class="reference">📄 المرجع: support4-PES-S4.pdf | Page 2</div>
+            </div>
+        </div>
+
+        <footer>
+            © Résumé complet basé uniquement sur les fichiers fournis (support1 à support6, images).<br>
+            Traduction bilingue français/arabe. Aucune source externe utilisée (sauf classement IDH 2025 ajouté à la demande).<br>
+            📚 Références ajoutées sans modification du texte original.
+        </footer>
     </div>
 
-    <div class="page">
-        <h2>📌 صفحة الملحق: مفاهيم موجودة في المرفقات ولم تطلب في أسئلتك<br>Annexe : concepts présents dans les fichiers mais non demandés</h2>
-        <div class="section-card">
-            <div class="badge">Autres notions importantes / مفاهيم أخرى مهمة</div>
-            <div class="fr"><strong>FR :</strong> 
-                <ul>
-                    <li><strong>Proto-industrialisation :</strong> système intermédiaire avant l'industrialisation moderne (industries rurales, putting-out system, marchand-manufacturier). Caractérisée par l'absence de volonté d'amélioration, production lente, distribution lente, nombre limité de travailleurs.</li>
-                    <li><strong>Croissance extensive vs intensive :</strong> extensive = utiliser plus de facteurs (travail, capital) ; intensive = utiliser mieux les facteurs (gains de productivité, progrès technique).</li>
-                    <li><strong>Croissance molle :</strong> taux de croissance annuels assez faibles.</li>
-                    <li><strong>Facteurs de croissance liés à l'offre :</strong> facteur travail (quantité et qualité), facteur capital (capital-argent et capital technique), progrès technique et innovations, ressources naturelles.</li>
-                    <li><strong>Facteurs de croissance liés à la demande :</strong> consommation et investissement, dépenses publiques, échanges extérieurs, contexte institutionnel (droits de propriété, réglementation).</li>
-                    <li><strong>Pauvreté absolue (selon B.R. Rowntree) :</strong> la non satisfaction ou juste la satisfaction d'un minimum vital (nourriture, logement, vêtements).</li>
-                    <li><strong>Pauvreté relative (selon l'OCDE) :</strong> définir la pauvreté par rapport aux revenus de la population (ex: individu ayant un revenu inférieur aux deux tiers du revenu moyen).</li>
-                    <li><strong>Pauvreté absolue vs relative (selon PNUD) :</strong> extrême pauvreté = ne pas satisfaire les besoins alimentaires essentiels ; pauvreté générale = insuffisance pour besoins alimentaires + non alimentaires ; pauvreté humaine = absence de capacités humaines de base (analphabétisme, malnutrition, mauvaise santé).</li>
-                    <li><strong>Pauvreté humaine (PNUD) :</strong> absence des capacités humaines de base : analphabétisme, malnutrition, longévité réduite, mauvaise santé maternelle, maladie évitable.</li>
-                    <li><strong>Externalités négatives :</strong> non prises en compte par le PIB (pollution, embouteillages, accidents).</li>
-                    <li><strong>Économie mixte :</strong> rôle de l'État + marché, modèle dominant actuel.</li>
-                    <li><strong>Différentes visions de la croissance chez les économistes :</strong> Adam Smith (division du travail, croissance illimitée), Malthus (famines), Ricardo (rendement décroissant, état stationnaire), Marx (accumulation du capital → chômage → baisse de la consommation), Keynes (rôle de l'État par investissements publics).</li>
-                </ul>
+    <!-- ============================================ -->
+    <!-- الصفحة المنفصلة: العلاقات الحسابية فقط -->
+    <!-- ============================================ -->
+    <div id="relations-page" class="page-content">
+        <div class="relations-container">
+            <h2 style="margin-bottom: 1.5rem;">🧮 جميع العلاقات الحسابية المستخرجة من الملخص</h2>
+            <p style="margin-bottom: 2rem; color: #64748b;">(تم استخراجها من المحتوى الأصلي دون أي تغيير أو تحريف)</p>
+            
+            <!-- العلاقة 1: PIB و PNB -->
+            <div class="relation-card">
+                <div class="relation-title">📊 1. العلاقة بين PIB و PNB (PIB vs PNB)</div>
+                <div class="relation-math">
+                    <strong>Formule 1 - PIB :</strong><br>
+                    PIB = Somme des Valeurs Ajoutées (VA) des entreprises nationales + Somme des VA des entreprises étrangères sur le territoire<br>
+                    <span style="background: #e2e8f0; padding: 2px 8px; border-radius: 5px; display: inline-block; margin-top: 8px;">PIB = 1000 + 200 = 1200</span>
+                </div>
+                <div class="relation-math">
+                    <strong>Formule 2 - PNB :</strong><br>
+                    PNB = PIB + Revenus reçus de l'étranger - Revenus versés à l'étranger<br>
+                    <span style="background: #e2e8f0; padding: 2px 8px; border-radius: 5px; display: inline-block; margin-top: 8px;">PNB = 1200 + 150 - 50 = 1300</span>
+                </div>
+                <div class="relation-math-ar">
+                    <strong>📐 الصيغة بالعربية:</strong><br>
+                    الناتج المحلي الإجمالي (PIB) = 1000 + 200 = 1200<br>
+                    الناتج القومي الإجمالي (PNB) = PIB + الدخل المحصل من المواطنين بالخارج - الدخل المدفوع للأجانب بالداخل = 1200 + 150 - 50 = 1300
+                </div>
+                <div class="reference">📄 المصدر: support4-PES-S4.pdf | Chapitre 4 | Page 2</div>
             </div>
-            <div class="ar"><strong>العربية :</strong>
-                <ul>
-                    <li><strong>التمهيد الصناعي (Proto-industrialisation):</strong> نظام وسيط قبل التصنيع الحديث (صناعات ريفية، نظام "putting-out"، تاجر-صانع). يتميز بغياب الرغبة في التحسين، إنتاج بطيء، توزيع بطيء، عدد محدود من العمال.</li>
-                    <li><strong>النمو الموسع مقابل النمو المكثف:</strong> الموسع = استخدام المزيد من عوامل الإنتاج؛ المكثف = استخدام أفضل لعوامل الإنتاج (مكاسب الإنتاجية، التقدم التقني).</li>
-                    <li><strong>النمو الناعم:</strong> معدلات نمو سنوية ضعيفة نوعًا ما.</li>
-                    <li><strong>عوامل النمو المرتبطة بالعرض:</strong> عامل العمل (كمًا ونوعًا)، عامل رأس المال (رأس مال نقدي ورأس مال تقني)، التقدم التقني والابتكارات، الموارد الطبيعية.</li>
-                    <li><strong>عوامل النمو المرتبطة بالطلب:</strong> الاستهلاك والاستثمار، الإنفاق العام، التبادلات الخارجية، السياق المؤسسي (حقوق الملكية، التنظيم).</li>
-                    <li><strong>الفقر المطلق (حسب B.R. Rowntree):</strong> عدم تلبية أو بالكاد تلبية الحد الأدنى الحيوي للعيش (غذاء، سكن، ملابس).</li>
-                    <li><strong>الفقر النسبي (حسب OCDE):</strong> تحديد الفقر مقارنة بدخل الساكنة ككل (مثال: الفرد الذي يقل دخله عن ثلثي الدخل المتوسط).</li>
-                    <li><strong>الفقر المطلق مقابل الفقر النسبي (حسب برنامج الأمم المتحدة الإنمائي):</strong> الفقر المدقع = عدم تلبية الاحتياجات الغذائية الأساسية؛ الفقر العام = عدم كفاية للاحتياجات الغذائية وغير الغذائية؛ الفقر البشري = غياب القدرات البشرية الأساسية (أمية، سوء تغذية، صحة أمومة سيئة).</li>
-                    <li><strong>الآثار الخارجية السلبية:</strong> لا تؤخذ بعين الاعتبار في الناتج المحلي الإجمالي (تلوث، ازدحام، حوادث).</li>
-                    <li><strong>الاقتصاد المختلط:</strong> دور الدولة + السوق، النموذج المسيطر حاليًا.</li>
-                    <li><strong>رؤى مختلفة للنمو عند الاقتصاديين:</strong> آدم سميث (تقسيم العمل، نمو غير محدود)، مالتوس (مجاعات)، ريكاردو (غلة متناقصة، حالة راكدة)، ماركس (تراكم رأس المال → بطالة → انخفاض الاستهلاك)، كينز (دور الدولة عبر الاستثمارات العامة).</li>
-                </ul>
+
+            <!-- العلاقة 2: IDH -->
+            <div class="relation-card">
+                <div class="relation-title">📈 2. مؤشر التنمية البشرية (IDH / HDI)</div>
+                <div class="relation-math">
+                    <strong>Formule :</strong><br>
+                    IDH = (Indice Niveau de vie + Indice Éducation + Indice Santé) / 3<br>
+                    <span style="background: #e2e8f0; padding: 2px 8px; border-radius: 5px; display: inline-block; margin-top: 8px;">IDH = (0.850 + 0.750 + 0.800) / 3 = 2.400 / 3 = 0.800</span>
+                </div>
+                <div class="relation-math-ar">
+                    <strong>📐 الصيغة بالعربية:</strong><br>
+                    مؤشر التنمية البشرية = (مؤشر المعيشة + مؤشر التعليم + مؤشر الصحة) / 3 = (0.850 + 0.750 + 0.800) / 3 = 0.800
+                </div>
+                <div class="reference">📄 المصدر: support5-PES-S4 2.docx | Page 2-3</div>
             </div>
-            <div class="reference">📄 المرجع: support1-PES-S4.docx, support2-PES-S4.pdf, support4-PES-S4.pdf, support5-PES-S4 2.docx, support6-PES-S4.pdf</div>
-        </div>
-        <div class="section-card">
-            <div class="badge">Limites du PIB mentionnées dans les fichiers / حدود الناتج المحلي الإجمالي المذكورة في المرفقات</div>
-            <div class="fr">✔ Ne mesure pas la qualité de vie.<br>✔ Ignore les activités non monétisées (travail domestique, bénévolat).<br>✔ Comptabilise positivement les nuisances (transport pour aller au travail = pollution, embouteillages, accidents).<br>✔ Ne dit rien sur la répartition des richesses.<br>✔ Ignore les atteintes à l'environnement (ressources naturelles).<br>✔ Sous-évalue la production non marchande (évaluée au coût de production).</div>
-            <div class="ar">✔ لا يقيس جودة الحياة.<br>✔ يتجاهل الأنشطة غير النقدية (العمل المنزلي، التطوع).<br>✔ يحصي بشكل إيجابي الأضرار (النقل إلى العمل = تلوث، ازدحام، حوادث).<br>✔ لا يخبرنا شيئًا عن توزيع الثروات.<br>✔ يتجاهل الأضرار البيئية (الموارد الطبيعية).<br>✔ يقلل من قيمة الإنتاج غير السوقي (يُقيّم بتكلفة الإنتاج).</div>
-            <div class="reference">📄 المرجع: support5-PES-S4 2.docx | Page 1</div>
-        </div>
-        <div class="section-card">
-            <div class="badge">Types de chômage détaillés / أنواع البطالة مفصلة</div>
-            <div class="fr">✔ Chômage frictionnel (entre deux emplois volontaires).<br>✔ Chômage saisonnier (activités saisonnières).<br>✔ Chômage conjoncturel (ralentissement économique).<br>✔ Chômage structurel (déséquilibre durable du marché du travail).<br>✔ Chômage technique (interruption temporaire de production).<br>✔ Chômage technologique (substitution capital/travail).</div>
-            <div class="ar">✔ بطالة احتكاكية (بين وظيفتين طوعيتين).<br>✔ بطالة موسمية (أنشطة موسمية).<br>✔ بطالة ظرفية (تباطؤ اقتصادي).<br>✔ بطالة هيكلية (اختلال دائم في سوق العمل).<br>✔ بطالة تقنية (انقطاع تقني مؤقت للإنتاج).<br>✔ بطالة تكنولوجية (استبدال رأس المال بالعمل).</div>
-            <div class="reference">📄 المرجع: support5-PES-S4 2.docx | Page 4</div>
-        </div>
-        <div class="section-card">
-            <div class="badge">Différences entre PIB et PNB (rappels) / الفروق بين الناتج المحلي والناتج القومي (تذكير)</div>
-            <div class="fr">PIB = logique territoriale ; PNB = logique nationale.<br>PIB = somme des VA des résidents sur le territoire ; PNB = somme des VA des nationaux où qu'ils soient.</div>
-            <div class="ar">PIB = منطق ترابي؛ PNB = منطق وطني.<br>PIB = مجموع القيم المضافة للمقيمين على الأراضي؛ PNB = مجموع القيم المضافة للمواطنين أينما كانوا.</div>
-            <div class="reference">📄 المرجع: support4-PES-S4.pdf | Page 2</div>
+
+            <!-- العلاقة 3: عتبات الفقر المغرب -->
+            <div class="relation-card">
+                <div class="relation-title">💰 3. عتبات الفقر - مثال المغرب (Seuils de pauvreté - Maroc)</div>
+                <div class="relation-math">
+                    <strong>Formule - Seuil monétaire (Urbain, 2014) :</strong><br>
+                    Seuil monétaire = Seuil alimentaire + Allocation non-alimentaire<br>
+                    <span style="background: #e2e8f0; padding: 2px 8px; border-radius: 5px; display: inline-block; margin-top: 8px;">Seuil = 2331 DH + 2336 DH = 4667 DH / an</span>
+                </div>
+                <div class="relation-math">
+                    <strong>Formule - Seuil relatif (France) :</strong><br>
+                    Seuil de pauvreté = Revenu médian × 60%<br>
+                    <span style="background: #e2e8f0; padding: 2px 8px; border-radius: 5px; display: inline-block; margin-top: 8px;">Exemple: 2000 € × 0.60 = 1200 € / mois</span>
+                </div>
+                <div class="relation-math-ar">
+                    <strong>📐 الصيغة بالعربية:</strong><br>
+                    الحد النقدي (المغرب، حضري 2014): 2331 درهم + 2336 درهم = 4667 درهم/سنة<br>
+                    الحد النسبي (فرنسا): 2000 يورو × 60٪ = 1200 يورو/شهر
+                </div>
+                <div class="reference">📄 المصدر: support6-PES-S4.pdf | Chapitre 4 | Pages 31-34</div>
+            </div>
+
+            <!-- العلاقة 4: الفروق بين PIB و PNB -->
+            <div class="relation-card">
+                <div class="relation-title">🔄 4. الفروق الجوهرية بين PIB و PNB</div>
+                <div class="relation-math">
+                    <strong>PIB (Produit Intérieur Brut) :</strong> Logique territoriale = somme des VA des résidents sur le territoire.<br>
+                    <strong>PNB (Produit National Brut) :</strong> Logique nationale = somme des VA des nationaux où qu'ils soient.
+                </div>
+                <div class="relation-math-ar">
+                    <strong>📐 بالعربية:</strong><br>
+                    الناتج المحلي الإجمالي: منطق ترابي = مجموع القيم المضافة للمقيمين على الأراضي.<br>
+                    الناتج القومي الإجمالي: منطق وطني = مجموع القيم المضافة للمواطنين أينما كانوا.
+                </div>
+                <div class="reference">📄 المصدر: support4-PES-S4.pdf | Page 2</div>
+            </div>
+
+            <div style="background: #f1f5f9; padding: 1rem; border-radius: 10px; text-align: center; margin-top: 2rem;">
+                ⚠️ هذه الصفحة تحتوي فقط على العلاقات الحسابية المستخرجة من المحتوى الأصلي. النص الكامل موجود في صفحة "المحتوى الأصلي".
+            </div>
         </div>
     </div>
-
-    <footer>
-        © Résumé complet basé uniquement sur les fichiers fournis (support1 à support6, images).<br>
-        Traduction bilingue français/arabe. Aucune source externe utilisée (sauf classement IDH 2025 ajouté à la demande).<br>
-        📚 Références ajoutées sans modification du texte original.
-    </footer>
 </div>
 
 <script>
@@ -935,6 +1073,29 @@
         } else {
             btn.innerHTML = '🌙 النظام الليلي';
         }
+    }
+    
+    function showPage(pageName) {
+        // إخفاء جميع الصفحات
+        document.getElementById('main-page').classList.remove('active-page');
+        document.getElementById('relations-page').classList.remove('active-page');
+        
+        // إظهار الصفحة المطلوبة
+        if (pageName === 'main') {
+            document.getElementById('main-page').classList.add('active-page');
+        } else if (pageName === 'relations') {
+            document.getElementById('relations-page').classList.add('active-page');
+        }
+        
+        // تحديث حالة الأزرار
+        const btns = document.querySelectorAll('.nav-btn');
+        btns.forEach((btn, index) => {
+            if ((pageName === 'main' && index === 0) || (pageName === 'relations' && index === 1)) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
     }
 </script>
 </body>
